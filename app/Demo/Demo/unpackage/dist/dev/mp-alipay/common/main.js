@@ -1,4 +1,4 @@
-(global["webpackJsonp"] = global["webpackJsonp"] || []).push([["common/main"],[
+(my["webpackJsonp"] = my["webpackJsonp"] || []).push([["common/main"],[
 /* 0 */
 /*!**********************************************************!*\
   !*** /Users/zj/Desktop/pro/quming/app/Demo/Demo/main.js ***!
@@ -18,7 +18,7 @@ var app = new _vue.default(_objectSpread({},
 _App.default));
 
 createApp(app).$mount();
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createApp"]))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-alipay/dist/index.js */ 1)["createApp"]))
 
 /***/ }),
 /* 1 */,
@@ -128,4 +128,3 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ })
 ],[[0,"common/runtime","common/vendor"]]]);
-//# sourceMappingURL=../../.sourcemap/mp-weixin/common/main.js.map

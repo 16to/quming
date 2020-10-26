@@ -12,6 +12,7 @@
 				</view>
 			</view>
 		</view>
+		这是取名应用的第一行代码
 	</view>
 </template>
 
