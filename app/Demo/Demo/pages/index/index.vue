@@ -1,6 +1,6 @@
 <template>
 	<view class="content">
-		<view class="uni-list">
+<!-- 		<view class="uni-list">
 			<view class="uni-list-cell" hover-class="uni-list-cell-hover" v-for="(item,index) in news" :key="index" @click="openinfo"
 			 :data-newsid="item.post_id">
 				<view class="uni-media-list">
@@ -11,7 +11,7 @@
 					</view>
 				</view>
 			</view>
-		</view>
+		</view> -->
 		这是取名应用的第一行代码
 	</view>
 </template>
