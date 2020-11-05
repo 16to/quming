@@ -9,11 +9,11 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@ApiModel("Ãû×ÖĞÅÏ¢")
+@ApiModel("åå­—")
 public class NameVO {
 
-	@ApiModelProperty("ĞÕ")
+	@ApiModelProperty("å§“")
 	private String firstName;
-	@ApiModelProperty("Ãû")
+	@ApiModelProperty("å")
 	private String lastName;
 }

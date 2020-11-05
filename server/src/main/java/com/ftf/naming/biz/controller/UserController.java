@@ -14,17 +14,17 @@ import io.swagger.annotations.ApiOperation;
 
 @RestController
 @RequestMapping("/user/")
-@Api("ÓÃ»§½Ó¿Ú")
+@Api("ç”¨æˆ·æ¥å£")
 public class UserController {
 
-	@ApiOperation("»ñÈ¡ÓÃ»§ÁĞ±í")
+	@ApiOperation("è·å–ç”¨æˆ·åˆ—è¡¨")
 	@GetMapping("list")
 	public List<UserVO> listUsers(){
 		List<UserVO> userList = new ArrayList<UserVO>();
-		userList.add(new UserVO("1","½£Ê¥","123456789"));
-		userList.add(new UserVO("2","ĞÉĞÉ","123456789"));
-		userList.add(new UserVO("3","¼úÄş","123456789"));
-		userList.add(new UserVO("4","¿­×Ó","123456789"));
+		userList.add(new UserVO("1","å‰‘åœ£","123456789"));
+		userList.add(new UserVO("2","çŒ©çŒ©","123456789"));
+		userList.add(new UserVO("3","å°å®å­","123456789"));
+		userList.add(new UserVO("4","å‡¯å­","123456789"));
 		return userList;
 	}
 }

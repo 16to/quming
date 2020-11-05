@@ -9,13 +9,13 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@ApiModel("ÓÃ»§ĞÅÏ¢")
+@ApiModel("ç”¨æˆ·")
 public class UserVO {
 
-	@ApiModelProperty("ÓÃ»§ID")
+	@ApiModelProperty("ç”¨æˆ·ID")
 	private String userId;
-	@ApiModelProperty("ÓÃ»§Ãû")
+	@ApiModelProperty("ç”¨æˆ·å")
 	private String name;
-	@ApiModelProperty("ÊÖ»úºÅ")
+	@ApiModelProperty("æ‰‹æœºå·")
 	private String phone;
 }

@@ -15,7 +15,6 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @Configuration
 @EnableSwagger2
 public class SwaggerConfig {
-	// swagger2�������ļ��������������swagger2��һЩ���������ݣ�����ɨ��İ��ȵ�
     @Bean
     public Docket createRestApi() {
          return new Docket(DocumentationType.SWAGGER_2)
@@ -25,15 +24,11 @@ public class SwaggerConfig {
                   .paths(PathSelectors.any())
                   .build();
     }
-    // ���� api�ĵ�����ϸ��Ϣ����,ע�������ע�����õ����ĸ�
     private ApiInfo apiInfo() {
          return new ApiInfoBuilder()
-                  // ҳ�����
-                  .title("434��һ����Ŀ")
-                  // �汾��
-                  .version("1.0")
-                  // ����
-                  .description("ȡ��ϵͳAPI")
+                  .title("434第一个项目")
+                  .version("0.1")
+                  .description("取名项目API接口")
                   .termsOfServiceUrl("http://www.baidu.com")
                   .build();
     }

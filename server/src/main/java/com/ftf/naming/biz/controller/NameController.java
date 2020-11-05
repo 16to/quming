@@ -11,12 +11,12 @@ import io.swagger.annotations.ApiOperation;
 
 @RestController
 @RequestMapping("/name/")
-@Api("ȡ���ӿ�")
+@Api("姓名接口")
 public class NameController {
 
-	@ApiOperation("ȡ��")
+	@ApiOperation("生成新名字")
 	@PostMapping("new")
 	public NameVO newName() {
-		return new NameVO("��","��");
+		return new NameVO("张","三");
 	}
 }
