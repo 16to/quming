@@ -1,6 +1,5 @@
 package com.ftf.naming.biz.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,12 +11,12 @@ import io.swagger.annotations.ApiOperation;
 
 @RestController
 @RequestMapping("/name/")
-@Api("取名接口")
+@Api("取锟斤拷锟接匡拷")
 public class NameController {
 
-	@ApiOperation("取名")
+	@ApiOperation("取锟斤拷")
 	@PostMapping("new")
 	public NameVO newName() {
-		return new NameVO("张","杰");
+		return new NameVO("锟斤拷","锟斤拷");
 	}
 }

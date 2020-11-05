@@ -3,7 +3,6 @@ package com.ftf.naming.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import com.google.common.base.Predicates;
 
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
@@ -16,7 +15,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @Configuration
 @EnableSwagger2
 public class SwaggerConfig {
-	// swagger2µÄÅäÖÃÎÄ¼ş£¬ÕâÀï¿ÉÒÔÅäÖÃswagger2µÄÒ»Ğ©»ù±¾µÄÄÚÈİ£¬±ÈÈçÉ¨ÃèµÄ°üµÈµÈ
+	// swagger2ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½swagger2ï¿½ï¿½Ò»Ğ©ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½İ£ï¿½ï¿½ï¿½ï¿½ï¿½É¨ï¿½ï¿½Ä°ï¿½ï¿½Èµï¿½
     @Bean
     public Docket createRestApi() {
          return new Docket(DocumentationType.SWAGGER_2)
@@ -26,15 +25,15 @@ public class SwaggerConfig {
                   .paths(PathSelectors.any())
                   .build();
     }
-    // ¹¹½¨ apiÎÄµµµÄÏêÏ¸ĞÅÏ¢º¯Êı,×¢ÒâÕâÀïµÄ×¢½âÒıÓÃµÄÊÇÄÄ¸ö
+    // ï¿½ï¿½ï¿½ï¿½ apiï¿½Äµï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½,×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×¢ï¿½ï¿½ï¿½ï¿½ï¿½Ãµï¿½ï¿½ï¿½ï¿½Ä¸ï¿½
     private ApiInfo apiInfo() {
          return new ApiInfoBuilder()
-                  // Ò³Ãæ±êÌâ
-                  .title("434µÚÒ»¸öÏîÄ¿")
-                  // °æ±¾ºÅ
+                  // Ò³ï¿½ï¿½ï¿½ï¿½ï¿½
+                  .title("434ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Ä¿")
+                  // ï¿½æ±¾ï¿½ï¿½
                   .version("1.0")
-                  // ÃèÊö
-                  .description("È¡ÃûÏµÍ³API")
+                  // ï¿½ï¿½ï¿½ï¿½
+                  .description("È¡ï¿½ï¿½ÏµÍ³API")
                   .termsOfServiceUrl("http://www.baidu.com")
                   .build();
     }
