@@ -28,13 +28,6 @@ Vue.prototype.$initLogin = function() {
 	}
 };
 
-/*初始化页面标题*/
-Vue.prototype.$initPageTitle = function(pageTitle = '开心品生活') {
-	// #ifdef H5
-	document.title = pageTitle;
-	// #endif
-};
-
 App.mpType = 'app'
 
 const app = new Vue({

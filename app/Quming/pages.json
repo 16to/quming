@@ -10,7 +10,7 @@
 				"app-plus": {
 					"bounce": "none" // 取消iOS回弹,避免和下拉刷新冲突 (小程序无法取消, 点此查看H5端的取消方法... )
 				},
-				"navigationBarTitleText": "取名"
+				"navigationBarTitleText": "AI取名"
 			}
 		},
 		{
@@ -47,7 +47,7 @@
 			{
 				"pagePath": "pages/user/index",
 				"iconPath": "static/images/nav/icon_user.png",
-				"selectedIconPath": "static/images/nav/icon_user.png",
+				"selectedIconPath": "static/images/nav/icon_user_hover.png",
 				"text": "我的"
 			}
 		]

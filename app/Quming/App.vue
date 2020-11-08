@@ -13,9 +13,8 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="css">
 /*每个页面公共css */
 @import './common/uni.css';
 @import './common/iconfont.css';
-@import './common/app.scss';
 </style>

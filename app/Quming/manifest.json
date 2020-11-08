@@ -106,8 +106,8 @@
         "appid" : ""
     },
     "h5" : {
-        "title" : "开心品生活",
-        "domain" : "life.weisite.org",
+        "title" : "AI取名",
+        "domain" : "qm.16to.com",
         "router" : {
             "base" : "/h5/",
             "mode" : "history"
