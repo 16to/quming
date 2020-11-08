@@ -87,107 +87,10 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "view",
-    { staticClass: _vm._$s(0, "sc", "content"), attrs: { _i: 0 } },
-    [
-      _c(
-        "view",
-        { staticClass: _vm._$s(1, "sc", "uni-list"), attrs: { _i: 1 } },
-        _vm._l(_vm._$s(2, "f", { forItems: _vm.news }), function(
-          item,
-          index,
-          $20,
-          $30
-        ) {
-          return _c(
-            "view",
-            {
-              key: _vm._$s(2, "f", { forIndex: $20, key: index }),
-              staticClass: _vm._$s("2-" + $30, "sc", "uni-list-cell"),
-              attrs: {
-                "data-newsid": _vm._$s(
-                  "2-" + $30,
-                  "a-data-newsid",
-                  item.post_id
-                ),
-                _i: "2-" + $30
-              },
-              on: { click: _vm.openinfo }
-            },
-            [
-              _c(
-                "view",
-                {
-                  staticClass: _vm._$s("3-" + $30, "sc", "uni-media-list"),
-                  attrs: { _i: "3-" + $30 }
-                },
-                [
-                  _c("image", {
-                    staticClass: _vm._$s(
-                      "4-" + $30,
-                      "sc",
-                      "uni-media-list-logo"
-                    ),
-                    attrs: {
-                      src: _vm._$s("4-" + $30, "a-src", item.author_avatar),
-                      _i: "4-" + $30
-                    }
-                  }),
-                  _c(
-                    "view",
-                    {
-                      staticClass: _vm._$s(
-                        "5-" + $30,
-                        "sc",
-                        "uni-media-list-body"
-                      ),
-                      attrs: { _i: "5-" + $30 }
-                    },
-                    [
-                      _c(
-                        "view",
-                        {
-                          staticClass: _vm._$s(
-                            "6-" + $30,
-                            "sc",
-                            "uni-media-list-text-top"
-                          ),
-                          attrs: { _i: "6-" + $30 }
-                        },
-                        [
-                          _vm._v(
-                            _vm._$s("6-" + $30, "t0-0", _vm._s(item.title))
-                          )
-                        ]
-                      ),
-                      _c(
-                        "view",
-                        {
-                          staticClass: _vm._$s(
-                            "7-" + $30,
-                            "sc",
-                            "uni-media-list-text-bottom uni-ellipsis"
-                          ),
-                          attrs: { _i: "7-" + $30 }
-                        },
-                        [
-                          _vm._v(
-                            _vm._$s("7-" + $30, "t0-0", _vm._s(item.created_at))
-                          )
-                        ]
-                      )
-                    ]
-                  )
-                ]
-              )
-            ]
-          )
-        }),
-        0
-      )
-    ]
-  )
+  return _c("view", {
+    staticClass: _vm._$s(0, "sc", "content"),
+    attrs: { _i: 0 }
+  })
 }
 var recyclableRender = false
 var staticRenderFns = []
@@ -215,7 +118,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _App
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("Object.defineProperty(exports, \"__esModule\", { value: true });exports.default = void 0; //\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\nvar _default =\n{\n  data: function data() {\n    return {\n      title: 'Demo',\n      news: [] };\n\n  },\n  // 当页面加载之后\n  onLoad: function onLoad() {var _this = this;\n    uni.showLoading({\n      title: '加载中' });\n\n    uni.request({\n      url: 'https://unidemo.dcloud.net.cn/api/news',\n      method: 'GET',\n      data: {},\n      success: function success(res) {\n        _this.news = res.data;\n        uni.hideLoading();\n      },\n      fail: function fail() {},\n      complete: function complete() {} });\n\n  },\n  methods: {\n    openinfo: function openinfo(e) {\n      var newsid = e.currentTarget.dataset.newsid;\n      uni.navigateTo({\n        url: '../info/info?newsid=' + newsid });\n\n    } } };exports.default = _default;//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInVuaS1hcHA6Ly8vcGFnZXMvaW5kZXgvaW5kZXgudnVlIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7QUFtQkE7QUFDQSxNQURBLGtCQUNBO0FBQ0E7QUFDQSxtQkFEQTtBQUVBLGNBRkE7O0FBSUEsR0FOQTtBQU9BO0FBQ0EsUUFSQSxvQkFRQTtBQUNBO0FBQ0Esa0JBREE7O0FBR0E7QUFDQSxtREFEQTtBQUVBLG1CQUZBO0FBR0EsY0FIQTtBQUlBO0FBQ0E7QUFDQTtBQUNBLE9BUEE7QUFRQSw4QkFSQTtBQVNBLHNDQVRBOztBQVdBLEdBdkJBO0FBd0JBO0FBQ0EsWUFEQSxvQkFDQSxDQURBLEVBQ0E7QUFDQTtBQUNBO0FBQ0EsNENBREE7O0FBR0EsS0FOQSxFQXhCQSxFIiwiZmlsZSI6IjYuanMiLCJzb3VyY2VzQ29udGVudCI6WyI8dGVtcGxhdGU+XHJcblx0PHZpZXcgY2xhc3M9XCJjb250ZW50XCI+XHJcblx0XHQ8dmlldyBjbGFzcz1cInVuaS1saXN0XCI+XHJcblx0XHRcdDx2aWV3IGNsYXNzPVwidW5pLWxpc3QtY2VsbFwiIGhvdmVyLWNsYXNzPVwidW5pLWxpc3QtY2VsbC1ob3ZlclwiIHYtZm9yPVwiKGl0ZW0saW5kZXgpIGluIG5ld3NcIiA6a2V5PVwiaW5kZXhcIiBAY2xpY2s9XCJvcGVuaW5mb1wiXHJcblx0XHRcdCA6ZGF0YS1uZXdzaWQ9XCJpdGVtLnBvc3RfaWRcIj5cclxuXHRcdFx0XHQ8dmlldyBjbGFzcz1cInVuaS1tZWRpYS1saXN0XCI+XHJcblx0XHRcdFx0XHQ8aW1hZ2UgY2xhc3M9XCJ1bmktbWVkaWEtbGlzdC1sb2dvXCIgOnNyYz1cIml0ZW0uYXV0aG9yX2F2YXRhclwiPjwvaW1hZ2U+XHJcblx0XHRcdFx0XHQ8dmlldyBjbGFzcz1cInVuaS1tZWRpYS1saXN0LWJvZHlcIj5cclxuXHRcdFx0XHRcdFx0PHZpZXcgY2xhc3M9XCJ1bmktbWVkaWEtbGlzdC10ZXh0LXRvcFwiPnt7aXRlbS50aXRsZX19PC92aWV3PlxyXG5cdFx0XHRcdFx0XHQ8dmlldyBjbGFzcz1cInVuaS1tZWRpYS1saXN0LXRleHQtYm90dG9tIHVuaS1lbGxpcHNpc1wiPnt7aXRlbS5jcmVhdGVkX2F0fX08L3ZpZXc+XHJcblx0XHRcdFx0XHQ8L3ZpZXc+XHJcblx0XHRcdFx0PC92aWV3PlxyXG5cdFx0XHQ8L3ZpZXc+XHJcblx0XHQ8L3ZpZXc+XG5cdFx06L+Z5piv5Y+W5ZCN5bqU55So55qE56ys5LiA6KGM5Luj56CBXHJcblx0PC92aWV3PlxyXG48L3RlbXBsYXRlPlxyXG5cclxuPHNjcmlwdD5cclxuXHRleHBvcnQgZGVmYXVsdCB7XHJcblx0XHRkYXRhKCkge1xyXG5cdFx0XHRyZXR1cm4ge1xyXG5cdFx0XHRcdHRpdGxlOiAnRGVtbycsXHJcblx0XHRcdFx0bmV3czogW10sXHJcblx0XHRcdH1cclxuXHRcdH0sXHJcblx0XHQvLyDlvZPpobXpnaLliqDovb3kuYvlkI5cclxuXHRcdG9uTG9hZCgpIHtcclxuXHRcdFx0dW5pLnNob3dMb2FkaW5nKHtcclxuXHRcdFx0XHR0aXRsZTogJ+WKoOi9veS4rScsXHJcblx0XHRcdH0pXHJcblx0XHRcdHVuaS5yZXF1ZXN0KHtcclxuXHRcdFx0XHR1cmw6ICdodHRwczovL3VuaWRlbW8uZGNsb3VkLm5ldC5jbi9hcGkvbmV3cycsXHJcblx0XHRcdFx0bWV0aG9kOiAnR0VUJyxcclxuXHRcdFx0XHRkYXRhOiB7fSxcclxuXHRcdFx0XHRzdWNjZXNzOiByZXMgPT4ge1xyXG5cdFx0XHRcdFx0dGhpcy5uZXdzID0gcmVzLmRhdGE7XHJcblx0XHRcdFx0XHR1bmkuaGlkZUxvYWRpbmcoKTtcclxuXHRcdFx0XHR9LFxyXG5cdFx0XHRcdGZhaWw6ICgpID0+IHt9LFxyXG5cdFx0XHRcdGNvbXBsZXRlOiAoKSA9PiB7fVxyXG5cdFx0XHR9KTtcclxuXHRcdH0sXHJcblx0XHRtZXRob2RzOiB7XHJcblx0XHRcdG9wZW5pbmZvKGUpIHtcclxuXHRcdFx0XHR2YXIgbmV3c2lkID0gZS5jdXJyZW50VGFyZ2V0LmRhdGFzZXQubmV3c2lkO1xyXG5cdFx0XHRcdHVuaS5uYXZpZ2F0ZVRvKHtcclxuXHRcdFx0XHRcdHVybDogJy4uL2luZm8vaW5mbz9uZXdzaWQ9JyArIG5ld3NpZFxyXG5cdFx0XHRcdH0pO1xyXG5cdFx0XHR9XHJcblx0XHR9XHJcblx0fVxyXG48L3NjcmlwdD5cclxuXHJcbjxzdHlsZT5cclxuXHQuY29udGVudCB7XHJcblx0XHRkaXNwbGF5OiBmbGV4O1xyXG5cdFx0ZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcclxuXHRcdGFsaWduLWl0ZW1zOiBjZW50ZXI7XHJcblx0XHRqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcclxuXHR9XHJcblxyXG5cdC5sb2dvIHtcclxuXHRcdGhlaWdodDogMjAwcnB4O1xyXG5cdFx0d2lkdGg6IDIwMHJweDtcclxuXHRcdG1hcmdpbi10b3A6IDIwMHJweDtcclxuXHRcdG1hcmdpbi1sZWZ0OiBhdXRvO1xyXG5cdFx0bWFyZ2luLXJpZ2h0OiBhdXRvO1xyXG5cdFx0bWFyZ2luLWJvdHRvbTogNTBycHg7XHJcblx0fVxyXG48L3N0eWxlPlxuIl0sInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///6\n");
+eval("Object.defineProperty(exports, \"__esModule\", { value: true });exports.default = void 0; //\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\nvar _default =\n{\n  data: function data() {\n    return {\n      title: 'Demo',\n      news: [] };\n\n  },\n  // 当页面加载之后\n  onLoad: function onLoad() {var _this = this;\n    uni.showLoading({\n      title: '加载中' });\n\n    uni.request({\n      url: 'https://unidemo.dcloud.net.cn/api/news',\n      method: 'GET',\n      data: {},\n      success: function success(res) {\n        _this.news = res.data;\n        uni.hideLoading();\n      },\n      fail: function fail() {},\n      complete: function complete() {} });\n\n  },\n  methods: {\n    openinfo: function openinfo(e) {\n      var newsid = e.currentTarget.dataset.newsid;\n      uni.navigateTo({\n        url: '../info/info?newsid=' + newsid });\n\n    } } };exports.default = _default;//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInVuaS1hcHA6Ly8vcGFnZXMvaW5kZXgvaW5kZXgudnVlIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7QUFtQkE7QUFDQSxNQURBLGtCQUNBO0FBQ0E7QUFDQSxtQkFEQTtBQUVBLGNBRkE7O0FBSUEsR0FOQTtBQU9BO0FBQ0EsUUFSQSxvQkFRQTtBQUNBO0FBQ0Esa0JBREE7O0FBR0E7QUFDQSxtREFEQTtBQUVBLG1CQUZBO0FBR0EsY0FIQTtBQUlBO0FBQ0E7QUFDQTtBQUNBLE9BUEE7QUFRQSw4QkFSQTtBQVNBLHNDQVRBOztBQVdBLEdBdkJBO0FBd0JBO0FBQ0EsWUFEQSxvQkFDQSxDQURBLEVBQ0E7QUFDQTtBQUNBO0FBQ0EsNENBREE7O0FBR0EsS0FOQSxFQXhCQSxFIiwiZmlsZSI6IjYuanMiLCJzb3VyY2VzQ29udGVudCI6WyI8dGVtcGxhdGU+XHJcblx0PHZpZXcgY2xhc3M9XCJjb250ZW50XCI+XHJcbjwhLS0gXHRcdDx2aWV3IGNsYXNzPVwidW5pLWxpc3RcIj5cclxuXHRcdFx0PHZpZXcgY2xhc3M9XCJ1bmktbGlzdC1jZWxsXCIgaG92ZXItY2xhc3M9XCJ1bmktbGlzdC1jZWxsLWhvdmVyXCIgdi1mb3I9XCIoaXRlbSxpbmRleCkgaW4gbmV3c1wiIDprZXk9XCJpbmRleFwiIEBjbGljaz1cIm9wZW5pbmZvXCJcclxuXHRcdFx0IDpkYXRhLW5ld3NpZD1cIml0ZW0ucG9zdF9pZFwiPlxyXG5cdFx0XHRcdDx2aWV3IGNsYXNzPVwidW5pLW1lZGlhLWxpc3RcIj5cclxuXHRcdFx0XHRcdDxpbWFnZSBjbGFzcz1cInVuaS1tZWRpYS1saXN0LWxvZ29cIiA6c3JjPVwiaXRlbS5hdXRob3JfYXZhdGFyXCI+PC9pbWFnZT5cclxuXHRcdFx0XHRcdDx2aWV3IGNsYXNzPVwidW5pLW1lZGlhLWxpc3QtYm9keVwiPlxyXG5cdFx0XHRcdFx0XHQ8dmlldyBjbGFzcz1cInVuaS1tZWRpYS1saXN0LXRleHQtdG9wXCI+e3tpdGVtLnRpdGxlfX08L3ZpZXc+XHJcblx0XHRcdFx0XHRcdDx2aWV3IGNsYXNzPVwidW5pLW1lZGlhLWxpc3QtdGV4dC1ib3R0b20gdW5pLWVsbGlwc2lzXCI+e3tpdGVtLmNyZWF0ZWRfYXR9fTwvdmlldz5cclxuXHRcdFx0XHRcdDwvdmlldz5cclxuXHRcdFx0XHQ8L3ZpZXc+XHJcblx0XHRcdDwvdmlldz5cclxuXHRcdDwvdmlldz4gLS0+XG5cdFx06L+Z5piv5Y+W5ZCN5bqU55So55qE56ys5LiA6KGM5Luj56CBXHJcblx0PC92aWV3PlxyXG48L3RlbXBsYXRlPlxyXG5cclxuPHNjcmlwdD5cclxuXHRleHBvcnQgZGVmYXVsdCB7XHJcblx0XHRkYXRhKCkge1xyXG5cdFx0XHRyZXR1cm4ge1xyXG5cdFx0XHRcdHRpdGxlOiAnRGVtbycsXHJcblx0XHRcdFx0bmV3czogW10sXHJcblx0XHRcdH1cclxuXHRcdH0sXHJcblx0XHQvLyDlvZPpobXpnaLliqDovb3kuYvlkI5cclxuXHRcdG9uTG9hZCgpIHtcclxuXHRcdFx0dW5pLnNob3dMb2FkaW5nKHtcclxuXHRcdFx0XHR0aXRsZTogJ+WKoOi9veS4rScsXHJcblx0XHRcdH0pXHJcblx0XHRcdHVuaS5yZXF1ZXN0KHtcclxuXHRcdFx0XHR1cmw6ICdodHRwczovL3VuaWRlbW8uZGNsb3VkLm5ldC5jbi9hcGkvbmV3cycsXHJcblx0XHRcdFx0bWV0aG9kOiAnR0VUJyxcclxuXHRcdFx0XHRkYXRhOiB7fSxcclxuXHRcdFx0XHRzdWNjZXNzOiByZXMgPT4ge1xyXG5cdFx0XHRcdFx0dGhpcy5uZXdzID0gcmVzLmRhdGE7XHJcblx0XHRcdFx0XHR1bmkuaGlkZUxvYWRpbmcoKTtcclxuXHRcdFx0XHR9LFxyXG5cdFx0XHRcdGZhaWw6ICgpID0+IHt9LFxyXG5cdFx0XHRcdGNvbXBsZXRlOiAoKSA9PiB7fVxyXG5cdFx0XHR9KTtcclxuXHRcdH0sXHJcblx0XHRtZXRob2RzOiB7XHJcblx0XHRcdG9wZW5pbmZvKGUpIHtcclxuXHRcdFx0XHR2YXIgbmV3c2lkID0gZS5jdXJyZW50VGFyZ2V0LmRhdGFzZXQubmV3c2lkO1xyXG5cdFx0XHRcdHVuaS5uYXZpZ2F0ZVRvKHtcclxuXHRcdFx0XHRcdHVybDogJy4uL2luZm8vaW5mbz9uZXdzaWQ9JyArIG5ld3NpZFxyXG5cdFx0XHRcdH0pO1xyXG5cdFx0XHR9XHJcblx0XHR9XHJcblx0fVxyXG48L3NjcmlwdD5cclxuXHJcbjxzdHlsZT5cclxuXHQuY29udGVudCB7XHJcblx0XHRkaXNwbGF5OiBmbGV4O1xyXG5cdFx0ZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcclxuXHRcdGFsaWduLWl0ZW1zOiBjZW50ZXI7XHJcblx0XHRqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcclxuXHR9XHJcblxyXG5cdC5sb2dvIHtcclxuXHRcdGhlaWdodDogMjAwcnB4O1xyXG5cdFx0d2lkdGg6IDIwMHJweDtcclxuXHRcdG1hcmdpbi10b3A6IDIwMHJweDtcclxuXHRcdG1hcmdpbi1sZWZ0OiBhdXRvO1xyXG5cdFx0bWFyZ2luLXJpZ2h0OiBhdXRvO1xyXG5cdFx0bWFyZ2luLWJvdHRvbTogNTBycHg7XHJcblx0fVxyXG48L3N0eWxlPlxuIl0sInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///6\n");
 
 /***/ }),
 /* 7 */
@@ -442,7 +345,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _App
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("Object.defineProperty(exports, \"__esModule\", { value: true });exports.default = void 0; //\n//\n//\n//\n//\n//\n//\n//\n//\nvar _default =\n{\n  data: function data() {\n    return {\n      title: '',\n      strings: '' };\n\n  },\n  onLoad: function onLoad(e) {var _this = this;\n    uni.showLoading({\n      title: '加载中' });\n\n    uni.request({\n      url: 'https://unidemo.dcloud.net.cn/api/news/36kr/' + e.newsid,\n      method: 'GET',\n      data: {},\n      success: function success(res) {\n        // console.log(res);\n        _this.title = res.data.title;\n        _this.strings = res.data.content;\n        uni.hideLoading();\n      },\n      fail: function fail() {},\n      complete: function complete() {} });\n\n  } };exports.default = _default;//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInVuaS1hcHA6Ly8vcGFnZXMvaW5mby9pbmZvLnZ1ZSJdLCJuYW1lcyI6WyJkYXRhIiwidGl0bGUiLCJzdHJpbmdzIiwib25Mb2FkIiwiZSIsInVuaSIsInNob3dMb2FkaW5nIiwicmVxdWVzdCIsInVybCIsIm5ld3NpZCIsIm1ldGhvZCIsInN1Y2Nlc3MiLCJyZXMiLCJjb250ZW50IiwiaGlkZUxvYWRpbmciLCJmYWlsIiwiY29tcGxldGUiXSwibWFwcGluZ3MiOiJ3RkFBQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7O0FBRWU7QUFDZEEsTUFEYyxrQkFDUDtBQUNOLFdBQU87QUFDTkMsV0FBSyxFQUFFLEVBREQ7QUFFTkMsYUFBTyxFQUFFLEVBRkgsRUFBUDs7QUFJQSxHQU5hO0FBT2RDLFFBQU0sRUFBRSxnQkFBU0MsQ0FBVCxFQUFZO0FBQ25CQyxPQUFHLENBQUNDLFdBQUosQ0FBZ0I7QUFDZkwsV0FBSyxFQUFDLEtBRFMsRUFBaEI7O0FBR0FJLE9BQUcsQ0FBQ0UsT0FBSixDQUFZO0FBQ1hDLFNBQUcsRUFBRSxpREFBaURKLENBQUMsQ0FBQ0ssTUFEN0M7QUFFWEMsWUFBTSxFQUFFLEtBRkc7QUFHWFYsVUFBSSxFQUFFLEVBSEs7QUFJWFcsYUFBTyxFQUFFLGlCQUFBQyxHQUFHLEVBQUk7QUFDZjtBQUNBLGFBQUksQ0FBQ1gsS0FBTCxHQUFhVyxHQUFHLENBQUNaLElBQUosQ0FBU0MsS0FBdEI7QUFDQSxhQUFJLENBQUNDLE9BQUwsR0FBZVUsR0FBRyxDQUFDWixJQUFKLENBQVNhLE9BQXhCO0FBQ0FSLFdBQUcsQ0FBQ1MsV0FBSjtBQUNBLE9BVFU7QUFVWEMsVUFBSSxFQUFFLGdCQUFNLENBQUUsQ0FWSDtBQVdYQyxjQUFRLEVBQUUsb0JBQU0sQ0FBRSxDQVhQLEVBQVo7O0FBYUEsR0F4QmEsRSIsImZpbGUiOiIxMi5qcyIsInNvdXJjZXNDb250ZW50IjpbIi8vXG4vL1xuLy9cbi8vXG4vL1xuLy9cbi8vXG4vL1xuLy9cblxuZXhwb3J0IGRlZmF1bHQge1xuXHRkYXRhKCkge1xuXHRcdHJldHVybiB7XG5cdFx0XHR0aXRsZTogJycsXG5cdFx0XHRzdHJpbmdzOiAnJ1xuXHRcdH1cblx0fSxcblx0b25Mb2FkOiBmdW5jdGlvbihlKSB7XG5cdFx0dW5pLnNob3dMb2FkaW5nKHtcblx0XHRcdHRpdGxlOifliqDovb3kuK0nLFxuXHRcdH0pXG5cdFx0dW5pLnJlcXVlc3Qoe1xuXHRcdFx0dXJsOiAnaHR0cHM6Ly91bmlkZW1vLmRjbG91ZC5uZXQuY24vYXBpL25ld3MvMzZrci8nICsgZS5uZXdzaWQsXG5cdFx0XHRtZXRob2Q6ICdHRVQnLFxuXHRcdFx0ZGF0YToge30sXG5cdFx0XHRzdWNjZXNzOiByZXMgPT4ge1xuXHRcdFx0XHQvLyBjb25zb2xlLmxvZyhyZXMpO1xuXHRcdFx0XHR0aGlzLnRpdGxlID0gcmVzLmRhdGEudGl0bGU7XG5cdFx0XHRcdHRoaXMuc3RyaW5ncyA9IHJlcy5kYXRhLmNvbnRlbnQ7XG5cdFx0XHRcdHVuaS5oaWRlTG9hZGluZygpO1xuXHRcdFx0fSxcblx0XHRcdGZhaWw6ICgpID0+IHt9LFxuXHRcdFx0Y29tcGxldGU6ICgpID0+IHt9XG5cdFx0fSk7XG5cdH1cbn1cbiJdLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///12\n");
+eval("Object.defineProperty(exports, \"__esModule\", { value: true });exports.default = void 0; //\n//\n//\n//\n//\n//\n//\n//\n//\nvar _default =\n{\n  data: function data() {\n    return {\n      title: '',\n      strings: '' };\n\n  },\n  onLoad: function onLoad(e) {var _this = this;\n    uni.showLoading({\n      title: '加载中' });\n\n    uni.request({\n      url: 'https://unidemo.dcloud.net.cn/api/news/36kr/' + e.newsid,\n      method: 'GET',\n      data: {},\n      success: function success(res) {\n        // console.log(res);\n        _this.title = res.data.title;\n        _this.strings = res.data.content;\n        uni.hideLoading();\n      },\n      fail: function fail() {},\n      complete: function complete() {} });\n\n  } };exports.default = _default;//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInVuaS1hcHA6Ly8vcGFnZXMvaW5mby9pbmZvLnZ1ZSJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7O0FBVUE7QUFDQSxNQURBLGtCQUNBO0FBQ0E7QUFDQSxlQURBO0FBRUEsaUJBRkE7O0FBSUEsR0FOQTtBQU9BO0FBQ0E7QUFDQSxrQkFEQTs7QUFHQTtBQUNBLG9FQURBO0FBRUEsbUJBRkE7QUFHQSxjQUhBO0FBSUE7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBLE9BVEE7QUFVQSw4QkFWQTtBQVdBLHNDQVhBOztBQWFBLEdBeEJBLEUiLCJmaWxlIjoiMTIuanMiLCJzb3VyY2VzQ29udGVudCI6WyI8dGVtcGxhdGU+XHJcblx0PHZpZXcgY2xhc3M9XCJjb250ZW50XCI+XHJcblx0XHQ8dmlldyBjbGFzcz1cInRpdGxlXCI+e3t0aXRsZX19PC92aWV3PlxyXG5cdFx0PHZpZXcgY2xhc3M9XCJhcnQtY29udGVudFwiPlxyXG5cdFx0XHQ8cmljaC10ZXh0IGNsYXNzPVwicmljaFRleHRcIiA6bm9kZXM9XCJzdHJpbmdzXCI+PC9yaWNoLXRleHQ+XHJcblx0XHQ8L3ZpZXc+XHJcblx0PC92aWV3PlxyXG48L3RlbXBsYXRlPlxyXG5cclxuPHNjcmlwdD5cclxuXHRleHBvcnQgZGVmYXVsdCB7XHJcblx0XHRkYXRhKCkge1xyXG5cdFx0XHRyZXR1cm4ge1xyXG5cdFx0XHRcdHRpdGxlOiAnJyxcclxuXHRcdFx0XHRzdHJpbmdzOiAnJ1xyXG5cdFx0XHR9XHJcblx0XHR9LFxyXG5cdFx0b25Mb2FkOiBmdW5jdGlvbihlKSB7XG5cdFx0XHR1bmkuc2hvd0xvYWRpbmcoe1xuXHRcdFx0XHR0aXRsZTon5Yqg6L295LitJyxcblx0XHRcdH0pXHJcblx0XHRcdHVuaS5yZXF1ZXN0KHtcclxuXHRcdFx0XHR1cmw6ICdodHRwczovL3VuaWRlbW8uZGNsb3VkLm5ldC5jbi9hcGkvbmV3cy8zNmtyLycgKyBlLm5ld3NpZCxcclxuXHRcdFx0XHRtZXRob2Q6ICdHRVQnLFxyXG5cdFx0XHRcdGRhdGE6IHt9LFxyXG5cdFx0XHRcdHN1Y2Nlc3M6IHJlcyA9PiB7XHJcblx0XHRcdFx0XHQvLyBjb25zb2xlLmxvZyhyZXMpO1xyXG5cdFx0XHRcdFx0dGhpcy50aXRsZSA9IHJlcy5kYXRhLnRpdGxlO1xyXG5cdFx0XHRcdFx0dGhpcy5zdHJpbmdzID0gcmVzLmRhdGEuY29udGVudDtcblx0XHRcdFx0XHR1bmkuaGlkZUxvYWRpbmcoKTtcclxuXHRcdFx0XHR9LFxyXG5cdFx0XHRcdGZhaWw6ICgpID0+IHt9LFxyXG5cdFx0XHRcdGNvbXBsZXRlOiAoKSA9PiB7fVxyXG5cdFx0XHR9KTtcclxuXHRcdH1cclxuXHR9XHJcbjwvc2NyaXB0PlxyXG5cclxuPHN0eWxlPlxyXG5cdC5jb250ZW50IHtcclxuXHRcdHBhZGRpbmc6IDEwdXB4IDIlO1xyXG5cdFx0d2lkdGg6IDk2JTtcclxuXHRcdGZsZXgtd3JhcDogd3JhcDtcclxuXHR9XHJcblxyXG5cdC50aXRsZSB7XHJcblx0XHRsaW5lLWhlaWdodDogMmVtO1xyXG5cdFx0Zm9udC13ZWlnaHQ6IDcwMDtcclxuXHRcdGZvbnQtc2l6ZTogMzh1cHg7XHJcblx0fVxyXG5cclxuXHQuYXJ0LWNvbnRlbnQge1xyXG5cdFx0bGluZS1oZWlnaHQ6IDJlbTtcclxuXHR9XHJcbjwvc3R5bGU+XG4iXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///12\n");
 
 /***/ }),
 /* 13 */
