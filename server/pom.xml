@@ -3,9 +3,9 @@
   <groupId>com.ftf</groupId>
   <artifactId>naming</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <start-class>com.ftf.naming.Application</start-class>
   </properties>
   
   <parent>
@@ -41,10 +41,22 @@
 </dependency>
   </dependencies>
   <build>
+    <sourceDirectory>src/main</sourceDirectory>
       <plugins>
         <plugin>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-maven-plugin</artifactId>
+            <configuration>
+                <!-- 工程主入口-->
+                <mainClass>com.ftf.naming.Application</mainClass>
+            </configuration>
+            <executions>
+                <execution>
+                    <goals>
+                        <goal>repackage</goal>
+                    </goals>
+                </execution>
+            </executions>
         </plugin>
       </plugins>
   </build>
