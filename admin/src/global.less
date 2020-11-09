@@ -1,0 +1,115 @@
+@import '~antd/es/style/themes/default.less';
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+.colorWeak {
+  filter: invert(80%);
+}
+
+.ant-input-number{
+  width: 100%;
+}
+
+.ant-layout {
+  min-height: 100vh;
+}
+
+canvas {
+  display: block;
+}
+
+body {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+.pull-right{
+  float: right;
+}
+
+.pull-left{
+  float: left;
+}
+
+.ant-page-header{
+  padding: 12px 24px;
+}
+
+.ant-typography-success{
+  color: #52C41A;
+}
+
+// 上传
+.avatar-uploader > .ant-upload {
+  width: 128px;
+  height: 128px;
+}
+
+.upload-img{
+  width: 128px;
+  height: 128px;
+}
+
+.textOverflow() {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  word-break: break-all;
+}
+
+.clearfix() {
+  zoom: 1;
+  &::before,
+  &::after {
+    display: table;
+    content: ' ';
+  }
+  &::after {
+    clear: both;
+    height: 0;
+    font-size: 0;
+    visibility: hidden;
+  }
+}
+
+.react-codemirror2{
+  .CodeMirror{
+    font-family: Avenir, 'Helvetica Neue', Arial, Helvetica, sans-serif;;
+    height: unset;
+    line-height: 22px;
+    min-height: 228px;
+    border-radius: 4px;
+    z-index: 1;
+  }
+  .CodeMirror-scroll{
+    overflow: hidden  !important;
+  }
+}
+
+
+@media (max-width: @screen-xs) {
+  .ant-table {
+    width: 100%;
+    overflow-x: auto;
+    &-thead > tr,
+    &-tbody > tr {
+      > th,
+      > td {
+        white-space: pre;
+        > span {
+          display: block;
+        }
+      }
+    }
+  }
+}

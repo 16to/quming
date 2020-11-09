@@ -1,0 +1,20 @@
+export default {
+  navTheme: 'dark',
+  primaryColor: '#13C2C2',
+  layout: 'topmenu',
+  contentWidth: 'Fluid',
+  fixedHeader: true,
+  autoHideHeader: false,
+  fixSiderbar: false,
+  menu: {
+    locale: true,
+  },
+  title: '取名管理后台',
+  pwa: false,
+  iconfontUrl: '',
+  collapse: true,
+  language: 'zh-CN',
+  author:'AI取名',
+  copyright:"AI取名",
+  imgBase:'http://g.16to.com/upload/',
+};
