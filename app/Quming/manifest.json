@@ -1,7 +1,7 @@
 {
     "name" : "AI取名",
     "appid" : "__UNI__B82E650",
-    "description" : "/h5/",
+    "description" : "",
     "versionName" : "1.0.0",
     "versionCode" : "100",
     "transformPx" : false,
@@ -109,9 +109,9 @@
         "title" : "AI取名",
         "domain" : "qm.16to.com",
         "router" : {
-            "base" : "/h5/",
-            "mode" : "history"
+            "base" : "",
+            "mode" : "hash"
         },
-        "template" : "template.h5.html"
+        "template" : ""
     }
 }
