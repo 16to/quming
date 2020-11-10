@@ -15,8 +15,6 @@ const { Search } = Input;
 class List extends PureComponent {
   state = {};
 
-  title='软文管理'
-
   // 定义表格头
   columns = [
     {
@@ -32,26 +30,26 @@ class List extends PureComponent {
       dataIndex: 'author',
       key: 'author',
     },
-    {
-      title: '类型',
-      dataIndex: 'type',
-      key: 'type',
-      render: val => (
-        <span>
-          {this.props.sysconfig.articleType && this.props.sysconfig.articleType[val]}
-        </span>
-      ),
-    },
-    {
-      title: '标签',
-      dataIndex: 'tag',
-      key: 'tag',
-      render: val => (
-        <span>
-          {this.props.sysconfig.articleTag && this.props.sysconfig.articleTag[val]}
-        </span>
-      ),
-    },
+    // {
+    //   title: '类型',
+    //   dataIndex: 'type',
+    //   key: 'type',
+    //   render: val => (
+    //     <span>
+    //       {this.props.sysconfig.articleType && this.props.sysconfig.articleType[val]}
+    //     </span>
+    //   ),
+    // },
+    // {
+    //   title: '标签',
+    //   dataIndex: 'tag',
+    //   key: 'tag',
+    //   render: val => (
+    //     <span>
+    //       {this.props.sysconfig.articleTag && this.props.sysconfig.articleTag[val]}
+    //     </span>
+    //   ),
+    // },
     {
       title: '排序',
       dataIndex: 'sort',
@@ -196,7 +194,7 @@ class List extends PureComponent {
             className="pull-right"
             onClick={this.addBtn}
           >
-            新建{this.title}
+            新建
           </Button>
           <Search
             placeholder="请输入关键词"

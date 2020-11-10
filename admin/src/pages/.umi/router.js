@@ -50,6 +50,32 @@ const routes = [
             exact: true,
           },
           {
+            path: '/visitor',
+            name: 'visitor',
+            icon: 'user',
+            component: require('../../layouts/ContentLayout').default,
+            routes: [
+              {
+                path: '/visitor',
+                hideInMenu: true,
+                component: require('../visitor/index').default,
+                exact: true,
+              },
+              {
+                component: require('../404').default,
+                exact: true,
+              },
+              {
+                component: () =>
+                  React.createElement(
+                    require('/Users/zj/Desktop/pro/quming/admin/node_modules/umi-build-dev/lib/plugins/404/NotFound.js')
+                      .default,
+                    { pagesPath: 'src/pages', hasRoutesInConfig: true },
+                  ),
+              },
+            ],
+          },
+          {
             path: '/article',
             name: 'article',
             icon: 'file-markdown',

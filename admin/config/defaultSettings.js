@@ -9,12 +9,12 @@ export default {
   menu: {
     locale: true,
   },
-  title: '取名管理后台',
+  title: 'AI取名管理后台',
   pwa: false,
   iconfontUrl: '',
   collapse: true,
   language: 'zh-CN',
   author:'AI取名',
   copyright:"AI取名",
-  imgBase:'http://g.16to.com/upload/',
+  imgBase:'http://qmadmin.16to.com/upload/',
 };

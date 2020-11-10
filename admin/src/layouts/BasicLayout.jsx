@@ -10,9 +10,10 @@ import { connect } from 'dva';
 import { formatMessage } from 'umi-plugin-react/locale';
 import Authorized from '@/utils/Authorized';
 import RightContent from '@/components/GlobalHeader/RightContent';
+import { Avatar } from 'antd';
 // import logo from '../assets/logo.svg';
 // eslint-disable-next-line import/no-unresolved
-import logo from '../assets/logo64X64.png';
+// import logo from '../assets/logo64X64.png';
 
 /**
  * use Authorized check all menu item
@@ -57,7 +58,7 @@ const BasicLayout = props => {
 
   return (
     <ProLayout
-      logo={logo}
+      logo={<Avatar size="normal" src="/favicon.png" alt="avatar" style={{backgroundColor:"#FFF"}} />}
       onCollapse={handleMenuCollapse}
       menuItemRender={(menuItemProps, defaultDom) => {
         if (menuItemProps.isUrl) {

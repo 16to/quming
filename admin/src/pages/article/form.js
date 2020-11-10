@@ -67,7 +67,7 @@ class BasicForm extends PureComponent {
             ],
           })(<Input placeholder="请输入作者" />)}
         </Form.Item>
-        <Form.Item {...formItemLayout} label="类型">
+        {/* <Form.Item {...formItemLayout} label="类型">
           {getFieldDecorator('type', {
             initialValue: updateData ? updateData && updateData.type : 0,
             rules: [
@@ -85,8 +85,8 @@ class BasicForm extends PureComponent {
               }
             </Select>,
           )}
-        </Form.Item>
-        <Form.Item {...formItemLayout} label="标签">
+        </Form.Item> */}
+        {/* <Form.Item {...formItemLayout} label="标签">
           {getFieldDecorator('tag', {
             initialValue: updateData ? updateData && updateData.tag : 1,
             rules: [
@@ -104,7 +104,7 @@ class BasicForm extends PureComponent {
               }
             </Select>,
           )}
-        </Form.Item>
+        </Form.Item> */}
         <Form.Item {...formItemLayout} label="排序">
           {getFieldDecorator('sort', {
             initialValue: updateData ? updateData && updateData.sort : 0,

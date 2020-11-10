@@ -31,8 +31,8 @@ router.post('/', (req, res) => {
   insertData.updatetime = insertData.addtime;
   insertData.content = escape(req.body.content);
   insertData.author = req.body.author;
-  insertData.type = req.body.type;
-  insertData.tag = req.body.tag;
+  // insertData.type = req.body.type;
+  // insertData.tag = req.body.tag;
   insertData.sort = req.body.sort;
   db.Insert('qm_article', insertData, (err, response) => {
     res.send(response);
@@ -47,8 +47,8 @@ router.put('/:id', (req, res) => {
   updateData.updatetime = Date.parse(new Date()) / 1000;
   updateData.content = escape(req.body.content);
   updateData.author = req.body.author;
-  updateData.type = req.body.type;
-  updateData.tag = req.body.tag;
+  // updateData.type = req.body.type;
+  // updateData.tag = req.body.tag;
   updateData.sort = req.body.sort;
   db.Update('qm_article', updateData, con, (err, response) => {
     res.send(response);

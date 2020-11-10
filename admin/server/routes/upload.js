@@ -10,7 +10,7 @@ let timestamp;
 // 上传文件
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, path.join(__dirname, '../../upload')); // 保存的路径
+    cb(null, path.join(__dirname, '../upload')); // 保存的路径
   },
   filename: (req, file, cb) => {
     // 将保存文件名设置为 字段名 + 时间戳，比如 logo-1478521468943
@@ -35,7 +35,7 @@ router.post('/paste', multer({ storage }).single('pasteimg'), (req, res) => {
 });
 
 router.delete('/:id', (req, res) => {
-  const filename = path.join(__dirname, '../../upload', req.params.id);
+  const filename = path.join(__dirname, '../upload', req.params.id);
   fs.unlink(filename, error => {
     if (error) {
       return error;

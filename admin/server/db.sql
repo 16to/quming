@@ -37,8 +37,8 @@ CREATE TABLE `qm_article` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(50) NOT NULL,
   `author` varchar(20) NOT NULL,
-  `type` int(5) NOT NULL,
-  `tag` int(5) NOT NULL,
+  `type` int(5) DEFAULT '0',
+  `tag` int(5) DEFAULT '0',
   `click` int(11) DEFAULT '0',
   `sort` int(11) DEFAULT '0',
   `content` text,
@@ -49,5 +49,14 @@ CREATE TABLE `qm_article` (
   KEY `tag` (`tag`),
   KEY `sort` (`sort`),
   KEY `click` (`click`)
+) DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `qm_visitor`;
+CREATE TABLE `qm_visitor` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `client` char(200) NOT NULL DEFAULT '',
+  `visitortime` bigint(20) DEFAULT 0,
+  `visitorip` char(20) DEFAULT '127.0.0.1',
+  PRIMARY KEY (`id`)
 ) DEFAULT CHARSET=utf8;
 

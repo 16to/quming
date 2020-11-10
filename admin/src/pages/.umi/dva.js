@@ -28,6 +28,7 @@ app.model({ namespace: 'setting', ...(require('/Users/zj/Desktop/pro/quming/admi
 app.model({ namespace: 'sysconfig', ...(require('/Users/zj/Desktop/pro/quming/admin/src/models/sysconfig.js').default) });
 app.model({ namespace: 'table', ...(require('/Users/zj/Desktop/pro/quming/admin/src/models/table.js').default) });
 app.model({ namespace: 'user', ...(require('/Users/zj/Desktop/pro/quming/admin/src/models/user.js').default) });
+app.model({ namespace: 'visitor', ...(require('/Users/zj/Desktop/pro/quming/admin/src/models/visitor.js').default) });
   return app;
 }
 

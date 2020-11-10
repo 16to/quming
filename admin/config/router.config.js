@@ -58,7 +58,24 @@ export default [
           //     }
           //   ]
           // },
-          // 软文功能
+          // 访问列表
+          {
+            path: "/visitor",
+            name: "visitor",
+            icon: "user",
+            component: "../layouts/ContentLayout",
+            routes: [
+              {
+                path: "/visitor",
+                hideInMenu: true,
+                component: "./visitor/index"
+              },
+              {
+                component: "./404"
+              }
+            ]
+          },
+          // 软文列表
           {
             path: "/article",
             name: "article",

@@ -5,7 +5,6 @@ export default {
 	},
 	onShow: function() {
 		console.log('App Show');
-		this.$initPageTitle(); //初始化页面标题
 	},
 	onHide: function() {
 		console.log('App Hide');

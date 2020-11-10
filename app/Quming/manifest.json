@@ -112,6 +112,11 @@
             "base" : "",
             "mode" : "hash"
         },
-        "template" : ""
+        "template" : "template.h5.html",
+        "optimization" : {
+            "treeShaking" : {
+                "enable" : true
+            }
+        }
     }
 }
