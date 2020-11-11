@@ -20,7 +20,7 @@
 				url: 'http://qmadmin.16to.com/api/visitor',
 				method: 'POST',
 				data: {
-					"client":"H5",
+					"client":uni.getSystemInfoSync().platform,
 				},
 				success: res => {
 					console.log(res);
@@ -29,6 +29,8 @@
 				fail: () => {},
 				complete: () => {}
 			});
+		},
+		methods: {
 		},
 	}
 </script>
