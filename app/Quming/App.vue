@@ -2,6 +2,20 @@
 export default {
 	onLaunch: function() {
 		console.log('App Launch');
+		uni.request({
+			url: 'http://qmadmin.16to.com/api/visitor',
+			method: 'POST',
+			data: {
+				"client":uni.getSystemInfoSync().platform,
+			},
+			success: res => {
+				console.log(res);
+				uni.hideLoading();
+			},
+			fail: () => {},
+			complete: () => {}
+		});
+		
 	},
 	onShow: function() {
 		console.log('App Show');

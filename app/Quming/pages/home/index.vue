@@ -1,36 +1,117 @@
 <template>
 	<view class="page">
-{{title}}
+		<view class="uni-padding-wrap">
+			<view class="page-section swiper">
+				<view class="page-section-spacing">
+					<swiper class="swiper" :indicator-dots="indicatorDots" :autoplay="autoplay" :interval="interval" :duration="duration">
+						<swiper-item>
+							<view class="swiper-item uni-bg-red">A</view>
+						</swiper-item>
+						<swiper-item>
+							<view class="swiper-item uni-bg-green">B</view>
+						</swiper-item>
+						<swiper-item>
+							<view class="swiper-item uni-bg-blue">C</view>
+						</swiper-item>
+					</swiper>
+				</view>
+			</view>
+		</view>
+		<view class="qm-form">
+			<form @submit="formSubmit">
+				<view class="uni-list">
+					<view class="uni-list-cell">
+						<view class="uni-list-cell-left">
+							性别
+						</view>
+						<view class="uni-list-cell-db">
+							<radio-group name="sex">
+								<label>
+									<radio value="man" checked="" /><text>男</text>
+								</label>
+								<label>
+									<radio value="feman" /><text>女</text>
+								</label>
+							</radio-group>
+						</view>
+					</view>
+					<view class="uni-list-cell">
+						<view class="uni-list-cell-left">
+							姓氏
+						</view>
+						<view class="uni-list-cell-db">
+							<input class="uni-input" name="firstName" placeholder="这是一个输入框" />
+						</view>
+					</view>
+					<view class="uni-list-cell">
+						<view class="uni-list-cell-left">
+							日期
+						</view>
+						<view class="uni-list-cell-db">
+							<MyDatetimePicker fields="hour" @change="dateTimeChange" />
+						</view>
+					</view>
+				</view>
+				<view class="uni-btn-v">
+					<button form-type="submit">点击取名</button>
+				</view>
+			</form>
+		</view>
 	</view>
 </template>
 
 <script>
+	import MyDatetimePicker from '@/components/datetime-picker/datetime-picker.vue';
 	export default {
+		components: {
+			MyDatetimePicker
+		},
 		data() {
 			return {
-				title: '首页访问记录',
+				background: ['color1', 'color2', 'color3'],
+				indicatorDots: true,
+				autoplay: true,
+				interval: 2000,
+				duration: 500,
+				birthday: '',
 			}
 		},
 		// 当页面加载之后
 		onLoad() {
-			uni.showLoading({
-				title: '加载中',
-			})
-			uni.request({
-				url: 'http://qmadmin.16to.com/api/visitor',
-				method: 'POST',
-				data: {
-					"client":uni.getSystemInfoSync().platform,
-				},
-				success: res => {
-					console.log(res);
-					uni.hideLoading();
-				},
-				fail: () => {},
-				complete: () => {}
-			});
+
 		},
 		methods: {
-		},
+			formSubmit: function(e) {
+				console.log('form发生了submit事件，携带数据为：' + JSON.stringify(e.detail.value))
+				let formdata = e.detail.value;
+				formdata.birthday = this.birthday;
+				console.log(formdata);
+				uni.showModal({
+					content: '表单数据内容：' + JSON.stringify(formdata),
+					showCancel: false
+				});
+				this.sendDate(formdata);
+			},
+			// 年月日时变化
+			dateTimeChange(date) {
+				console.log(date);
+				this.birthday = date.f3;
+			},
+			// 发送请求数据
+			sendDate(data) {
+				uni.request({
+					url: 'http://qmapi.16to.com/api/visitor',
+					method: 'POST',
+					data: {
+						data,
+					},
+					success: res => {
+						console.log(res);
+					},
+					fail: () => {},
+					complete: () => {}
+				});
+			}
+		}
 	}
 </script>
