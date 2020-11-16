@@ -220,81 +220,9 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "v-uni-view",
-    { staticClass: _vm._$g(0, "sc"), attrs: { _i: 0 } },
-    [
-      _c(
-        "v-uni-view",
-        { staticClass: _vm._$g(1, "sc"), attrs: { _i: 1 } },
-        _vm._l(_vm._$g(2, "f"), function(item, index, $20, $30) {
-          return _c(
-            "v-uni-view",
-            {
-              key: item,
-              staticClass: _vm._$g("2-" + $30, "sc"),
-              attrs: {
-                "hover-class": "uni-list-cell-hover",
-                "data-newsid": _vm._$g("2-" + $30, "a-data-newsid"),
-                _i: "2-" + $30
-              },
-              on: {
-                click: function($event) {
-                  return _vm.$handleViewEvent($event)
-                }
-              }
-            },
-            [
-              _c(
-                "v-uni-view",
-                {
-                  staticClass: _vm._$g("3-" + $30, "sc"),
-                  attrs: { _i: "3-" + $30 }
-                },
-                [
-                  _c("v-uni-image", {
-                    staticClass: _vm._$g("4-" + $30, "sc"),
-                    attrs: { src: _vm._$g("4-" + $30, "a-src"), _i: "4-" + $30 }
-                  }),
-                  _c(
-                    "v-uni-view",
-                    {
-                      staticClass: _vm._$g("5-" + $30, "sc"),
-                      attrs: { _i: "5-" + $30 }
-                    },
-                    [
-                      _c(
-                        "v-uni-view",
-                        {
-                          staticClass: _vm._$g("6-" + $30, "sc"),
-                          attrs: { _i: "6-" + $30 }
-                        },
-                        [_vm._v(_vm._$g("6-" + $30, "t0-0"))]
-                      ),
-                      _c(
-                        "v-uni-view",
-                        {
-                          staticClass: _vm._$g("7-" + $30, "sc"),
-                          attrs: { _i: "7-" + $30 }
-                        },
-                        [_vm._v(_vm._$g("7-" + $30, "t0-0"))]
-                      )
-                    ],
-                    1
-                  )
-                ],
-                1
-              )
-            ],
-            1
-          )
-        }),
-        1
-      ),
-      _vm._v("这是取名应用的第一行代码")
-    ],
-    1
-  )
+  return _c("v-uni-view", { staticClass: _vm._$g(0, "sc"), attrs: { _i: 0 } }, [
+    _vm._v("这是取名应用的第一行代码")
+  ])
 }
 var recyclableRender = false
 var staticRenderFns = []

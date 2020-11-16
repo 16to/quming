@@ -1,0 +1,50 @@
+﻿<project version="2.9" name="AI取名" ID="34F83782-D6B2-4BD1-8AB8-DF3082278966">
+  <params>
+    <pageParam version="5.3" minAllowVersion="5.3"/>
+    <projectParam version="2.9" minAllowVersion="2.9" platform="MtMobile" orientation="MoPortrait" mobileScreenScale="1.77777779102325" mobileType="mmtIOS" pageSize="(375,667)" backgroundColor="4294967295" fontSize="0" fontFamily="" projectType="ptPersonalProject" isShowTitleIndex="False"/>
+    <previewParam version="1.0"/>
+    <colorParam version="1.0"/>
+  </params>
+  <pages>
+    <page name="取名" ID="EE860127-D196-4BE8-81CF-BA0D1A188C08" expanded="True" code="Kj8olvnQkZ" thumbCode="mvmcJ5ltWj" isLastOpen="True" status="psWhite" isfolder="False" isshownode="True">
+      <images>
+        <image key="42CF9E031360EBC09387427849BF6328.svg"/>
+        <image key="CE8FFB8A4795B8DA164319D38A53C482.svg"/>
+        <image key="79ED9A8A5E935F1718B121288CC5FAF0.svg"/>
+        <image key="BED95C8B40F707D86B851FFCFC2CA465.svg"/>
+        <image key="83DD69C47E6D1466D54371E396D6F349.svg"/>
+        <image key="2D780716D3D89B2EFB0155599BA0A89F.svg"/>
+      </images>
+      <page name="生成" ID="1B36DDF3-B8AC-44A7-B5A4-F4A921CC6411" expanded="True" code="yHl16Jka78" thumbCode="yHl16Jka78" status="psWhite" isfolder="False" isshownode="True">
+        <images>
+          <image key="816F4E91F94ADDBB1B74D66AACA8B462.svg"/>
+          <image key="CFAC147583A1C602F91FE6F2C39DA488.svg"/>
+          <image key="2D780716D3D89B2EFB0155599BA0A89F.svg"/>
+        </images>
+        <page name="详情" ID="37826AA3-924F-4E6A-9EF2-3836A000D487" expanded="True" code="24rmdu29XR" thumbCode="EGAvA6543A" status="psWhite" isfolder="False" isshownode="True">
+          <images>
+            <image key="79ED9A8A5E935F1718B121288CC5FAF0.svg"/>
+            <image key="CFAC147583A1C602F91FE6F2C39DA488.svg"/>
+            <image key="BED95C8B40F707D86B851FFCFC2CA465.svg"/>
+          </images>
+        </page>
+      </page>
+      <page name="注册-登录" ID="57FA2C81-31DC-42EE-97B2-07779461702F" expanded="True" code="ddKFTvq7UT" thumbCode="ddKFTvq7UT" status="psWhite" isfolder="False" isshownode="True"/>
+    </page>
+  </pages>
+  <trash>
+    <page name="页面1" ID="92D35977-9E0B-47D0-9406-2F69E5FC2419" expanded="False" code="3rA8fZfz6Y" thumbCode="y1iACxTLjX" status="psWhite" isfolder="False" isshownode="True"/>
+  </trash>
+  <deletes/>
+  <masters/>
+  <images>
+    <image key="42CF9E031360EBC09387427849BF6328.svg"/>
+    <image key="816F4E91F94ADDBB1B74D66AACA8B462.svg"/>
+    <image key="79ED9A8A5E935F1718B121288CC5FAF0.svg"/>
+    <image key="83DD69C47E6D1466D54371E396D6F349.svg"/>
+    <image key="CFAC147583A1C602F91FE6F2C39DA488.svg"/>
+    <image key="CE8FFB8A4795B8DA164319D38A53C482.svg"/>
+    <image key="2D780716D3D89B2EFB0155599BA0A89F.svg"/>
+    <image key="BED95C8B40F707D86B851FFCFC2CA465.svg"/>
+  </images>
+</project>

@@ -2,10 +2,23 @@
 export default {
 	onLaunch: function() {
 		console.log('App Launch');
+		uni.request({
+			url: 'http://localhost:8001/api/visitor',
+			method: 'POST',
+			data: {
+				"client":uni.getSystemInfoSync().platform,
+			},
+			success: res => {
+				console.log(res);
+				uni.hideLoading();
+			},
+			fail: () => {},
+			complete: () => {}
+		});
+		
 	},
 	onShow: function() {
 		console.log('App Show');
-		this.$initPageTitle(); //初始化页面标题
 	},
 	onHide: function() {
 		console.log('App Hide');
@@ -13,9 +26,8 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="css">
 /*每个页面公共css */
 @import './common/uni.css';
 @import './common/iconfont.css';
-@import './common/app.scss';
 </style>

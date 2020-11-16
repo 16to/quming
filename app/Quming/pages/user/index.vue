@@ -1,6 +1,6 @@
 <template>
 	<view class="page">
-5678
+		我的
 	</view>
 </template>
 

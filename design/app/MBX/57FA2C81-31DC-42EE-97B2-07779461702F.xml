@@ -1,0 +1,55 @@
+﻿<mockup version="5.3" minAllowVersion="5.3" ID="57FA2C81-31DC-42EE-97B2-07779461702F" platform="MtMobile" defaultW="375" defaultH="667" measureW="375" measureH="667" screenOrientation="MoPortrait" mobileScreenScale="1.77777779102325" clipArea="(0,0,0,0)">
+  <controls controlCount="8">
+    <control controlID="FED1CB77-96CD-4464-846D-692CE6A33843" controlTypeID="StatusBar(IOS)" x="0" y="0" w="375" h="20" zOrder="0"/>
+    <control controlID="80F54975-349A-4052-B0AC-4349D18A38D0" controlTypeID="Image" x="0" y="20" w="375" h="198" zOrder="1"/>
+    <control controlID="D7642748-A467-4228-91A8-B4B5E8661B61" controlTypeID="Label" x="29" y="244" w="112" h="18" zOrder="2">
+      <font family="Segoe+UI" displayName="Segoe+UI" postScript="" weightStyle="Regular" weight="400" isBold="False" isItalic="False"/>
+      <text>%E8%AF%B7%E8%BE%93%E5%85%A5%E4%BD%A0%E7%9A%84%E6%89%8B%E6%9C%BA%E5%8F%B7</text>
+      <lineSpacing>0</lineSpacing>
+      <selectedIndex>-1</selectedIndex>
+    </control>
+    <control controlID="7A5F9DF9-2741-4E10-979F-1DC90283EAA8" controlTypeID="Line" x="29" y="279" w="328" h="1" zOrder="3">
+      <font family="Segoe+UI" displayName="Segoe+UI" postScript="" weightStyle="Regular" weight="400" isBold="False" isItalic="False"/>
+      <textSize>14</textSize>
+      <lineSpacing>0</lineSpacing>
+      <selectedIndex>-1</selectedIndex>
+      <controlPoint>(164,0)</controlPoint>
+      <startPoint>(0,0)</startPoint>
+      <endPoint>(328,0)</endPoint>
+    </control>
+    <control controlID="148FBB4C-0EE6-442A-8F32-CEB3AA018E43" controlTypeID="Label" x="29" y="316" w="84" h="18" zOrder="4">
+      <font family="Segoe+UI" displayName="Segoe+UI" postScript="" weightStyle="Regular" weight="400" isBold="False" isItalic="False"/>
+      <text>%E8%AF%B7%E8%BE%93%E5%85%A5%E9%AA%8C%E8%AF%81%E7%A0%81</text>
+      <lineSpacing>0</lineSpacing>
+      <selectedIndex>-1</selectedIndex>
+    </control>
+    <control controlID="048F88FD-65EC-49A0-B06B-EE16706F26AD" controlTypeID="Line" x="29" y="351" w="328" h="1" zOrder="5">
+      <font family="Segoe+UI" displayName="Segoe+UI" postScript="" weightStyle="Regular" weight="400" isBold="False" isItalic="False"/>
+      <textSize>14</textSize>
+      <lineSpacing>0</lineSpacing>
+      <selectedIndex>-1</selectedIndex>
+      <controlPoint>(164,0)</controlPoint>
+      <startPoint>(0,0)</startPoint>
+      <endPoint>(328,0)</endPoint>
+    </control>
+    <control controlID="02A0B894-3965-497D-884C-8998BD23AD32" controlTypeID="Label" x="280" y="316" w="70" h="18" zOrder="6">
+      <font family="Segoe+UI" displayName="Segoe+UI" postScript="" weightStyle="Regular" weight="400" isBold="False" isItalic="False"/>
+      <text>%E8%8E%B7%E5%8F%96%E9%AA%8C%E8%AF%81%E7%A0%81</text>
+      <textColor>4294901760</textColor>
+      <lineSpacing>0</lineSpacing>
+      <selectedIndex>-1</selectedIndex>
+    </control>
+    <control controlID="5810611B-35EF-4B15-9943-D23AC8805560" controlTypeID="Button" x="25" y="394" w="336" h="48" zOrder="7">
+      <font family="Segoe+UI" displayName="Segoe+UI" postScript="" weightStyle="Regular" weight="400" isBold="False" isItalic="False"/>
+      <text>%E7%99%BB%E5%BD%95%2F%E6%B3%A8%E5%86%8C</text>
+      <lineSpacing>0</lineSpacing>
+      <selectedIndex>-1</selectedIndex>
+    </control>
+  </controls>
+  <param>
+    <backgroundColor>4294967295</backgroundColor>
+    <fontSize>0</fontSize>
+    <fontFamily/>
+    <guideLines/>
+  </param>
+</mockup>
