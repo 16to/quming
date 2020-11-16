@@ -1,21 +1,13 @@
 <template>
 	<view class="page">
-		<view class="uni-padding-wrap">
-			<view class="page-section swiper">
-				<view class="page-section-spacing">
-					<swiper class="swiper" :indicator-dots="indicatorDots" :autoplay="autoplay" :interval="interval" :duration="duration">
-						<swiper-item>
-							<view class="swiper-item uni-bg-red">A</view>
-						</swiper-item>
-						<swiper-item>
-							<view class="swiper-item uni-bg-green">B</view>
-						</swiper-item>
-						<swiper-item>
-							<view class="swiper-item uni-bg-blue">C</view>
-						</swiper-item>
-					</swiper>
-				</view>
-			</view>
+		<view class="uni-margin-wrap">
+			<swiper class="swiper" circular :indicator-dots="indicatorDots" :autoplay="autoplay" :interval="interval" :duration="duration">
+				<swiper-item v-for="v in banner">
+					<view class="swiper-item">
+						<image class="image" mode="widthFix" :src='"http://localhost:8001/upload/"+v.img' />
+					</view>
+				</swiper-item>
+			</swiper>
 		</view>
 		<view class="qm-form">
 			<form @submit="formSubmit">
@@ -40,7 +32,7 @@
 							姓氏
 						</view>
 						<view class="uni-list-cell-db">
-							<input class="uni-input" name="firstName" placeholder="这是一个输入框" />
+							<input class="uni-input" name="fname" placeholder="这是一个输入框" />
 						</view>
 					</view>
 					<view class="uni-list-cell">
@@ -68,23 +60,34 @@
 		},
 		data() {
 			return {
-				background: ['color1', 'color2', 'color3'],
-				indicatorDots: true,
+				indicatorDots: false,
 				autoplay: true,
-				interval: 2000,
+				interval: 3000,
 				duration: 500,
 				birthday: '',
+				banner: [],
+				src: 'http://localhost:8001/upload/bgimg-1605406980490.png'
 			}
 		},
 		// 当页面加载之后
 		onLoad() {
-
+			uni.request({
+				url: 'http://localhost:8001/api/banner?page=1&pageSize=3',
+				method: 'GET',
+				data: {},
+				success: res => {
+					this.banner = res.data;
+				},
+				fail: () => {},
+				complete: () => {}
+			});
 		},
 		methods: {
 			formSubmit: function(e) {
 				console.log('form发生了submit事件，携带数据为：' + JSON.stringify(e.detail.value))
 				let formdata = e.detail.value;
 				formdata.birthday = this.birthday;
+				formdata.client = "H5";
 				console.log(formdata);
 				uni.showModal({
 					content: '表单数据内容：' + JSON.stringify(formdata),
@@ -100,11 +103,9 @@
 			// 发送请求数据
 			sendDate(data) {
 				uni.request({
-					url: 'http://qmapi.16to.com/api/visitor',
+					url: 'http://localhost:8001/api/postor',
 					method: 'POST',
-					data: {
-						data,
-					},
+					data: data,
 					success: res => {
 						console.log(res);
 					},
@@ -115,3 +116,41 @@
 		}
 	}
 </script>
+
+<style>
+	.uni-margin-wrap {
+		/* width:690rpx; */
+		margin: 0 30rpx;
+	}
+
+	.swiper {
+		height: 300rpx;
+	}
+
+	.swiper-item {
+		display: block;
+		height: 300rpx;
+		line-height: 300rpx;
+		text-align: center;
+	}
+
+	.swiper-list {
+		margin-top: 40rpx;
+		margin-bottom: 0;
+	}
+
+	.uni-common-mt {
+		margin-top: 60rpx;
+		position: relative;
+	}
+
+	.info {
+		position: absolute;
+		right: 20rpx;
+	}
+
+	.uni-padding-wrap {
+		width: 550rpx;
+		padding: 0 100rpx;
+	}
+</style>

@@ -3,7 +3,7 @@ export default {
 	onLaunch: function() {
 		console.log('App Launch');
 		uni.request({
-			url: 'http://qmadmin.16to.com/api/visitor',
+			url: 'http://localhost:8001/api/visitor',
 			method: 'POST',
 			data: {
 				"client":uni.getSystemInfoSync().platform,
