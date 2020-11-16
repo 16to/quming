@@ -16,8 +16,8 @@ POST	/name/actions/generate
     "selectParam":{
         //筛选条件支持多个
         "length":[2,3,4],//长度
-        "element":["metal","wood"],//metal-金，wood-木，water-水，fire-火,earth-土
-        "source":["shijing","chuci"]//shijing-诗经，chuci-楚辞，lunyu-论语，tangshi-唐诗，songci-宋词
+        "elements":["metal","wood"],//metal-金，wood-木，water-水，fire-火,earth-土
+        "sources":["shijing","chuci"]//shijing-诗经，chuci-楚辞，lunyu-论语，tangshi-唐诗，songci-宋词
     }
 }
 ```
