@@ -1,5 +1,7 @@
 package com.ftf.naming.biz.param;
 
+import java.util.List;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -21,10 +23,10 @@ public class NewNameParam {
 	@ApiModel("筛选参数")
 	public class SelectParam{
 		@ApiModelProperty("长度")
-		private Integer length;
+		private List<Integer> length;
 		@ApiModelProperty("五行")
-		private String element;
+		private List<String> element;
 		@ApiModelProperty("出处")
-		private String source;
+		private List<String> source;
 	}
 }

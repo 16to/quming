@@ -38,6 +38,7 @@ POST	/name/actions/generate
             "length":2,
             "zodiac":"生肖",
             "constellation":"星座",
+            "source":"出处",
             "lastName":[
                 {
                     "word":"字",
@@ -45,9 +46,11 @@ POST	/name/actions/generate
                     "strokes":10,//笔画
                     "pinyin":"拼音",
                     "explanation":"字典释义",
-                    "source":"出处",
-                    "celebrity":"名人",
-                    "element":"五行"
+                    "element":{//五行
+                        "type":"类型",
+                        "name":"名称",
+                        "explanation":"解释"
+                    }
                 },
                 {……}
             ] 
@@ -78,6 +81,8 @@ id=12345
         "id":"名字唯一标识",
         "firstName":"姓",
         "length":2,
+        "source":"出处",
+        "celebrities":["名人1","名人2"],
         "zodiac":{//生肖
             "type":"类型",//Rat,OX,Tiger,Rabbit,Dragon,Snake,Horse,Sheep,Monkey,Rooster,Dog,Pig
             "name":"名称",//鼠,牛,虎,兔,龙,蛇,马,羊,猴,鸡,狗,猪
@@ -99,8 +104,6 @@ id=12345
                 "strokes":10,//笔画
                 "pinyin":"拼音",
                 "explanation":"字典释义",
-                "source":"出处",
-                "celebrity":"名人",
                 "element":{//五行
                     "type":"类型",
                     "name":"名称",
