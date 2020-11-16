@@ -2,9 +2,9 @@
 	<view class="page">
 		<view class="uni-margin-wrap">
 			<swiper class="swiper" circular :indicator-dots="indicatorDots" :autoplay="autoplay" :interval="interval" :duration="duration">
-				<swiper-item v-for="v in banner">
+				<swiper-item v-for="v in banner" :key="v.id">
 					<view class="swiper-item">
-						<image class="image" mode="widthFix" :src='"http://localhost:8001/upload/"+v.img' />
+						<image class="image" mode="widthFix" :src='uplaodPath+v.img' />
 					</view>
 				</swiper-item>
 			</swiper>
@@ -60,19 +60,20 @@
 		},
 		data() {
 			return {
+				uplaodPath: this.$api.uploadRoot,
 				indicatorDots: false,
 				autoplay: true,
 				interval: 3000,
 				duration: 500,
 				birthday: '',
 				banner: [],
-				src: 'http://localhost:8001/upload/bgimg-1605406980490.png'
 			}
 		},
 		// 当页面加载之后
 		onLoad() {
+			// 获取banner
 			uni.request({
-				url: 'http://localhost:8001/api/banner?page=1&pageSize=3',
+				url: this.$api.home.banner,
 				method: 'GET',
 				data: {},
 				success: res => {
@@ -103,11 +104,15 @@
 			// 发送请求数据
 			sendDate(data) {
 				uni.request({
-					url: 'http://localhost:8001/api/postor',
+					url: this.$api.home.postor,
 					method: 'POST',
 					data: data,
 					success: res => {
 						console.log(res);
+						// 跳转到列表页
+						uni.navigateTo({
+							url: '/pages/home/list',
+						});
 					},
 					fail: () => {},
 					complete: () => {}
