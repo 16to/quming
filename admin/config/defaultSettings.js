@@ -16,5 +16,5 @@ export default {
   language: 'zh-CN',
   author:'AI取名',
   copyright:"AI取名",
-  imgBase:'http://qmadmin.16to.com/upload/',
+  imgBase:'/upload/',
 };

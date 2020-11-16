@@ -1,4 +1,4 @@
-// /api/article
+// /api/banner
 const express = require('express');
 const db = require('../core/db');
 
@@ -11,7 +11,7 @@ router.get('/', (req, res) => {
     con.like = `title like '%${req.query.search}%'`;
   }
   con.orderBy = 'addtime desc';
-  db.Select('qm_article', con, (err, response) => {
+  db.Select('qm_banner', con, (err, response) => {
     res.send(response || []);
   });
 });
@@ -19,7 +19,7 @@ router.get('/', (req, res) => {
 router.get('/:id', (req, res) => {
   const con = [];
   con.id = parseInt(req.params.id, 10);
-  db.Select('qm_article', con, (err, response) => {
+  db.Select('qm_banner', con, (err, response) => {
     res.send(response[0]);
   });
 });
@@ -29,12 +29,9 @@ router.post('/', (req, res) => {
   insertData.title = req.body.title;
   insertData.addtime = Date.parse(new Date()) / 1000;
   insertData.updatetime = insertData.addtime;
-  insertData.content = escape(req.body.content);
-  insertData.author = req.body.author;
-  // insertData.type = req.body.type;
-  // insertData.tag = req.body.tag;
+  insertData.img = req.body.img;
   insertData.sort = req.body.sort;
-  db.Insert('qm_article', insertData, (err, response) => {
+  db.Insert('qm_banner', insertData, (err, response) => {
     res.send(response);
   });
 });
@@ -45,12 +42,9 @@ router.put('/:id', (req, res) => {
   con.id = parseInt(req.params.id, 10);
   updateData.title = req.body.title;
   updateData.updatetime = Date.parse(new Date()) / 1000;
-  updateData.content = escape(req.body.content);
-  updateData.author = req.body.author;
-  // updateData.type = req.body.type;
-  // updateData.tag = req.body.tag;
+  updateData.img = req.body.img;
   updateData.sort = req.body.sort;
-  db.Update('qm_article', updateData, con, (err, response) => {
+  db.Update('qm_banner', updateData, con, (err, response) => {
     res.send(response);
   });
 });
@@ -58,7 +52,7 @@ router.put('/:id', (req, res) => {
 router.delete('/:id', (req, res) => {
   const con = [];
   con.id = parseInt(req.params.id, 10);
-  db.Delete('qm_article', con, (err, response) => {
+  db.Delete('qm_banner', con, (err, response) => {
     res.send(response);
   });
 });

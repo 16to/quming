@@ -50,6 +50,46 @@ const routes = [
             exact: true,
           },
           {
+            path: '/banner',
+            name: 'banner',
+            icon: 'ordered-list',
+            component: require('../../layouts/ContentLayout').default,
+            routes: [
+              {
+                path: '/banner',
+                hideInMenu: true,
+                component: require('../banner/index').default,
+                exact: true,
+              },
+              {
+                path: '/banner/add',
+                name: 'add',
+                hideInMenu: true,
+                component: require('../banner/add').default,
+                exact: true,
+              },
+              {
+                path: '/banner/update/:id',
+                name: 'update',
+                hideInMenu: true,
+                component: require('../banner/update').default,
+                exact: true,
+              },
+              {
+                component: require('../404').default,
+                exact: true,
+              },
+              {
+                component: () =>
+                  React.createElement(
+                    require('/Users/zj/Desktop/pro/quming/admin/node_modules/umi-build-dev/lib/plugins/404/NotFound.js')
+                      .default,
+                    { pagesPath: 'src/pages', hasRoutesInConfig: true },
+                  ),
+              },
+            ],
+          },
+          {
             path: '/visitor',
             name: 'visitor',
             icon: 'user',
@@ -59,6 +99,32 @@ const routes = [
                 path: '/visitor',
                 hideInMenu: true,
                 component: require('../visitor/index').default,
+                exact: true,
+              },
+              {
+                component: require('../404').default,
+                exact: true,
+              },
+              {
+                component: () =>
+                  React.createElement(
+                    require('/Users/zj/Desktop/pro/quming/admin/node_modules/umi-build-dev/lib/plugins/404/NotFound.js')
+                      .default,
+                    { pagesPath: 'src/pages', hasRoutesInConfig: true },
+                  ),
+              },
+            ],
+          },
+          {
+            path: '/postor',
+            name: 'postor',
+            icon: 'link',
+            component: require('../../layouts/ContentLayout').default,
+            routes: [
+              {
+                path: '/postor',
+                hideInMenu: true,
+                component: require('../postor/index').default,
                 exact: true,
               },
               {

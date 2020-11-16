@@ -15,7 +15,9 @@ const tableRouter = require('./routes/table');
 const loginRouter = require('./routes/login');
 const accountRouter = require('./routes/account');
 const articleRouter = require('./routes/article');
+const bannerRouter = require('./routes/banner');
 const visitorRouter = require('./routes/visitor');
+const postorRouter = require('./routes/postor');
 const sysconfigRouter = require('./routes/sysconfig');
 const uploadRouter = require('./routes/upload');
 
@@ -58,7 +60,9 @@ app.use('/api/upload', uploadRouter);
 app.use('/api/account', accountRouter);
 app.use('/api/article', articleRouter);
 app.use('/api/visitor', visitorRouter);
+app.use('/api/postor', postorRouter);
 app.use('/api/sysconfig', sysconfigRouter);
+app.use('/api/banner', bannerRouter);
 
 // set dist
 app.use('/upload', express.static(path.join(__dirname, './upload')));

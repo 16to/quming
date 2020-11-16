@@ -1,4 +1,4 @@
-// /api/visitor
+// /api/postor
 const express = require('express');
 const db = require('../core/db');
 const utils = require('../core/utils');
@@ -11,8 +11,8 @@ router.get('/', (req, res) => {
   if (req.query.search) {
     con.like = `client like '%${req.query.search}%'`;
   }
-  con.orderBy = 'visitortime desc';
-  db.Select('qm_visitor', con, (err, response) => {
+  con.orderBy = 'postortime desc';
+  db.Select('qm_postor', con, (err, response) => {
     res.send(response || []);
   });
 });
@@ -21,10 +21,11 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
   const insertData = [];
   insertData.client = req.body.client;
-  insertData.visitortime = Date.parse(new Date());
-  // 获取访问ip
-  insertData.visitorip = utils.getClientIp(req);
-  db.Insert('qm_visitor', insertData, (err, response) => {
+  insertData.postortime = Date.parse(new Date());
+  insertData.postorbirthday = req.body.birthday;
+  insertData.postorfname = req.body.fname;
+  insertData.postorsex = req.body.sex;
+  db.Insert('qm_postor', insertData, (err, response) => {
     res.send(response);
   });
 });

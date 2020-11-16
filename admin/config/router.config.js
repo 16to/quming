@@ -58,6 +58,35 @@ export default [
           //     }
           //   ]
           // },
+          // 横幅管理
+          {
+            path: "/banner",
+            name: "banner",
+            icon: "ordered-list",
+            component: "../layouts/ContentLayout",
+            routes: [
+              {
+                path: "/banner",
+                hideInMenu: true,
+                component: "./banner/index"
+              },
+              {
+                path: "/banner/add",
+                name: "add",
+                hideInMenu: true,
+                component: "./banner/add"
+              },
+              {
+                path: "/banner/update/:id",
+                name: "update",
+                hideInMenu: true,
+                component: "./banner/update"
+              },
+              {
+                component: "./404"
+              }
+            ]
+          },
           // 访问列表
           {
             path: "/visitor",
@@ -75,7 +104,24 @@ export default [
               }
             ]
           },
-          // 软文列表
+          // 请求列表
+          {
+            path: "/postor",
+            name: "postor",
+            icon: "link",
+            component: "../layouts/ContentLayout",
+            routes: [
+              {
+                path: "/postor",
+                hideInMenu: true,
+                component: "./postor/index"
+              },
+              {
+                component: "./404"
+              }
+            ]
+          },
+          // 软文管理
           {
             path: "/article",
             name: "article",

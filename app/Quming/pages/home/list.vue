@@ -1,6 +1,6 @@
 <template>
 	<view>
-	<uni-nav-bar left-icon="back" @clickLeft="backHome" @clickRight="favorite" left-text="返回" right-text="收藏列表" title="导航栏组件"></uni-nav-bar>
+	<uni-nav-bar left-icon="back" @clickLeft="backHome" @clickRight="favorite" left-text="返回" right-text="收藏列表" title="名字列表"></uni-nav-bar>
 	<view>
 		123
 	</view>

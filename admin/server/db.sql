@@ -1,8 +1,12 @@
+/*
+* quming database
+*/
+
 DROP TABLE IF EXISTS `qm_table`;
 CREATE TABLE `qm_table` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` char(200) NOT NULL DEFAULT '',
-  `content` text,
+  `content` longtext,
   `addtime` bigint(20) DEFAULT '0',
   `updatetime` bigint(20) DEFAULT '0',
   `imagename` char(200) DEFAULT '',
@@ -41,7 +45,7 @@ CREATE TABLE `qm_article` (
   `tag` int(5) DEFAULT '0',
   `click` int(11) DEFAULT '0',
   `sort` int(11) DEFAULT '0',
-  `content` text,
+  `content` longtext,
   `updatetime` int(10) NOT NULL DEFAULT '0',
   `addtime` int(10) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
@@ -60,3 +64,25 @@ CREATE TABLE `qm_visitor` (
   PRIMARY KEY (`id`)
 ) DEFAULT CHARSET=utf8;
 
+DROP TABLE IF EXISTS `qm_banner`;
+CREATE TABLE `qm_banner` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(50) NOT NULL,
+  `sort` int(11) DEFAULT '0',
+  `img` varchar(255) NOT NULL DEFAULT '',
+  `addtime` int(10) NOT NULL DEFAULT '0',
+  `updatetime` int(10) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `sort` (`sort`)
+) DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `qm_postor`;
+CREATE TABLE `qm_postor` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `client` char(200) NOT NULL DEFAULT '',
+  `postortime` bigint(20) DEFAULT '0',
+  `postorbirthday` char(20) DEFAULT '',
+  `postorsex` char(20) DEFAULT '',
+  `postorfname` char(20) DEFAULT '',
+  PRIMARY KEY (`id`)
+) DEFAULT CHARSET=utf8;

@@ -22,8 +22,10 @@ export function _onCreate() {
   
   app.model({ namespace: 'account', ...(require('/Users/zj/Desktop/pro/quming/admin/src/models/account.js').default) });
 app.model({ namespace: 'article', ...(require('/Users/zj/Desktop/pro/quming/admin/src/models/article.js').default) });
+app.model({ namespace: 'banner', ...(require('/Users/zj/Desktop/pro/quming/admin/src/models/banner.js').default) });
 app.model({ namespace: 'global', ...(require('/Users/zj/Desktop/pro/quming/admin/src/models/global.js').default) });
 app.model({ namespace: 'login', ...(require('/Users/zj/Desktop/pro/quming/admin/src/models/login.js').default) });
+app.model({ namespace: 'postor', ...(require('/Users/zj/Desktop/pro/quming/admin/src/models/postor.js').default) });
 app.model({ namespace: 'setting', ...(require('/Users/zj/Desktop/pro/quming/admin/src/models/setting.js').default) });
 app.model({ namespace: 'sysconfig', ...(require('/Users/zj/Desktop/pro/quming/admin/src/models/sysconfig.js').default) });
 app.model({ namespace: 'table', ...(require('/Users/zj/Desktop/pro/quming/admin/src/models/table.js').default) });
