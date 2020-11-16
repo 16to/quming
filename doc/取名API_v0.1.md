@@ -1,74 +1,4 @@
-# 1.用户模块
-
-## 1.1获取用户信息
-
-#### 接口路径
-
-GET	/user/info
-
-#### 请求
-
-phone=13812341234
-
-#### 响应
-
-```json
-{
-	"code":0,
-	"message":"成功",
-	"data":{
-		"userId":"用户ID",
-        "name":"用户名，可以为空",
-        "phone":"手机号"
-	}
-}
-```
-
-
-
-## 1.2登录
-
-#### 接口路径
-
-POST	/user/actions/login
-
-#### 请求
-
-phone=13812341234
-
-#### 响应
-
-```json
-{
-	"code":0,
-    "message":"成功",
-    "data":null
-}
-```
-
-## 1.3发送短信验证码
-
-#### 接口路径
-
-POST	/user/actions/sendVerify
-
-#### 请求
-
-phone=13812341234
-
-#### 响应
-
-```json
-{
-	"code":0,
-    "message":"成功",
-    "data":null
-}
-```
-
-## 
-
-# 2.名字模块
+# 1.名字模块
 
 ## 2.1取名
 
@@ -84,9 +14,10 @@ POST	/name/actions/generate
     "birth":"出生时间",//必传
     "sex":0,//必传，0-女，1-男
     "selectParam":{
-        "length":2,//长度
-        "element":"五行",//metal-金，wood-木，water-水，fire-huo,earth-土
-        "source":"出处"//shijing-诗经，chuci-楚辞，lunyu-论语，tangshi-唐诗，songci-宋词
+        //筛选条件支持多个
+        "length":[2,3,4],//长度
+        "element":["metal","wood"],//metal-金，wood-木，water-水，fire-火,earth-土
+        "source":["shijing","chuci"]//shijing-诗经，chuci-楚辞，lunyu-论语，tangshi-唐诗，songci-宋词
     }
 }
 ```
@@ -101,24 +32,13 @@ POST	/name/actions/generate
 	"message":"成功",
     "data":[
         {
+            //整个名字和单个字的结构区分开
             "id":"名字唯一标识",
             "firstName":"姓",
-            "lastName":"名",
             "length":2,
-            "oldword":"繁体",
-            "strokes":10,//笔画
-            "pinyin":"拼音",
-            "explanation":"字典释义",
-            "source":"出处",
-            "celebrity":"名人",
             "zodiac":{//生肖
                 "type":"类型",//Rat,OX,Tiger,Rabbit,Dragon,Snake,Horse,Sheep,Monkey,Rooster,Dog,Pig
                 "name":"名称",//鼠,牛,虎,兔,龙,蛇,马,羊,猴,鸡,狗,猪
-                "explanation":"解释"
-            },
-            "element":{//五行
-                "type":"类型",
-                "name":"名称",
                 "explanation":"解释"
             },
             "constellation":{//星座
@@ -129,8 +49,26 @@ POST	/name/actions/generate
             "same":{//同名
                 "male":10,//男性
                 "female":12,//女性
-            }
-        }
+            },
+            "lastName":[
+                {
+                    "word":"字",
+                    "oldword":"繁体",
+                    "strokes":10,//笔画
+                    "pinyin":"拼音",
+                    "explanation":"字典释义",
+                    "source":"出处",
+                    "celebrity":"名人",
+                    "element":{//五行
+                        "type":"类型",
+                        "name":"名称",
+                        "explanation":"解释"
+                    }
+                },
+                {……}
+            ] 
+        },
+        {……}
     ]
 }
 ```
@@ -143,7 +81,12 @@ POST	/name/actions/collect
 
 #### 请求
 
-userId=12345&nameId=12345
+```json
+{
+	"userId":"12345",
+	"nameId":"12345"
+}
+```
 
 #### 响应
 
@@ -152,6 +95,24 @@ userId=12345&nameId=12345
 	"code":0,
     "message":"成功",
     "data":null
+}
+```
+
+## 2.3查询收藏列表
+
+GET	/name/collections/list
+
+#### 请求
+
+userId=12345
+
+#### 响应
+
+```
+{
+	"code":0,
+    "message":"成功",
+    "data":同2.1取名接口返回data数据结构
 }
 ```
 
