@@ -12,6 +12,10 @@ import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.ftf.naming.biz.dto.NameDTO;
+import com.ftf.naming.biz.enums.ConstellationEnum;
+import com.ftf.naming.biz.enums.ElementEnum;
+import com.ftf.naming.biz.enums.SourceEnum;
+import com.ftf.naming.biz.enums.ZodiacEnum;
 import com.ftf.naming.biz.param.NewNameParam;
 import com.ftf.naming.biz.vo.NameVO;
 import com.ftf.naming.util.JsonUtil;
@@ -57,6 +61,37 @@ public class NameService {
 	
 	public NameVO newName(NewNameParam param) {
 		NameDTO name = nameList.get(r.nextInt(nameList.size()));
-		return new NameVO(param.getFirstName(),name);
+		NameVO newName = new NameVO(param.getFirstName(),name);
+		newName.setSource(getSource(newName));
+		newName.setCelebrity(getCelebrity(newName));
+		newName.setZodiac(getZodiac(newName));
+		newName.setElement(getElement(newName));
+		newName.setConstellation(getConstellation(newName));
+		newName.setSame(getSame(newName));
+		return newName;
+	}
+	
+	public String getSource(NameVO name) {
+		return SourceEnum.CHUCI.getName();
+	}
+	
+	public String getCelebrity(NameVO name) {
+		return "还名人呢？你就是个人名";
+	}
+	
+	public NameVO.Zodiac getZodiac(NameVO name) {
+		return new NameVO.Zodiac(ZodiacEnum.DOG.getType(),ZodiacEnum.DOG.getName(),"这是一条狗");
+	}
+	
+	public NameVO.Element getElement(NameVO name) {
+		return new NameVO.Element(ElementEnum.METAL.getType(),ElementEnum.METAL.getName(),"金三胖");
+	}
+
+	public NameVO.Constellation getConstellation(NameVO name) {
+		return new NameVO.Constellation(ConstellationEnum.LEO.getType(),ConstellationEnum.LEO.getName(),"七月份的尾巴你是狮子座");
+	}
+	
+	public NameVO.Same getSame(NameVO name) {
+		return new NameVO.Same(10, 10);
 	}
 }
