@@ -2,15 +2,27 @@
 	<view>
 	<uni-nav-bar left-icon="back" @clickLeft="backHome" @clickRight="favorite" left-text="返回" right-text="收藏列表" title="名字列表"></uni-nav-bar>
 	<view>
-		123
+		<uni-card 
+		    title="Dcloud" 
+		    extra="加入收藏" 
+		>
+		    那是一个秋意盎然、金风送爽的日子,我和父母一起来到了位于上师大旁的康健园.一踏进公园,一股浓郁的桂香扑鼻而来,泌人心脾,让我心旷神怡,只见一朵朵开得正烈的金色桂花,迎风而立,仿佛在向我招手.我们追着这桂香,走进了清幽的公园.
+		</uni-card>
+		<uni-card
+		    title="Dcloud" 
+		    extra="加入收藏" 
+		>
+		    那是一个秋意盎然、金风送爽的日子,我和父母一起来到了位于上师大旁的康健园.一踏进公园,一股浓郁的桂香扑鼻而来,泌人心脾,让我心旷神怡,只见一朵朵开得正烈的金色桂花,迎风而立,仿佛在向我招手.我们追着这桂香,走进了清幽的公园.
+		</uni-card>
 	</view>
 	</view>
 </template>
 
 <script>
 	import uniNavBar from "@/components/uni-nav-bar/uni-nav-bar.vue"
+	import uniCard from '@/components/uni-card/uni-card.vue'
 	export default {
-		components: {uniNavBar},
+		components: {uniNavBar,uniCard},
 		data() {
 			return {
 				nbTitle: '标题',
