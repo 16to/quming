@@ -22,7 +22,11 @@
 				<image :src="thumbnail" class="uni-card__header-extra-img" />
 			</view>
 			<text class="uni-card__header-title-text">{{ title }}</text>
-			<text v-if="extra" class="uni-card__header-extra-text">{{ extra }}</text>
+			<view v-if="extra" class="uni-card__header-extra">
+				<slot name="extra">
+					<text class="uni-card__header-extra-text">{{ extra }}</text>
+				</slot>
+			</view>
 		</view>
 		<!-- 内容 -->
 		<view class="uni-card__content uni-card__content--pd">
