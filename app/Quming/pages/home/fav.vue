@@ -1,8 +1,8 @@
 <template>
 	<view>
-		<uni-nav-bar left-icon="back" @clickLeft="backList" @clickRight="toFav" left-text="返回">
+		<uni-nav-bar left-icon="back" @clickLeft="backUser" left-text="返回" title="我的收藏">
 		</uni-nav-bar>
-		<view>detail</view>
+		<view>我的收藏</view>
 	</view>
 </template>
 
@@ -18,9 +18,9 @@
 			}
 		},
 		methods: {
-			backList() {
-				uni.navigateTo({
-					url: '/pages/home/list',
+			backUser() {
+				uni.switchTab({
+					url: '/pages/user/index',
 				});
 			},
 		},
