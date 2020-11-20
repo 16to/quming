@@ -26,7 +26,7 @@ export default {
 };
 </script>
 
-<style lang="sass">
+<style lang="scss">
 /*每个页面公共css */
 @import './uni.scss';
 @import './common/iconfont.css';
