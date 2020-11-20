@@ -1,16 +1,16 @@
 <template>
 	<view>
-		<uni-nav-bar left-icon="back" @clickLeft="backHome" @clickRight="favorite" left-text="返回" right-text="收藏列表" title="名字列表">
+		<uni-nav-bar left-icon="back" @clickLeft="backHome" @clickRight="toFav" left-text="返回" right-text="收藏列表" title="名字列表">
 		</uni-nav-bar>
 		<view>
-			<uni-card title="Dcloud" extra="加入收藏">
-				那是一个秋意盎然、金风送爽的日子,我和父母一起来到了位于上师大旁的康健园.一踏进公园,一股浓郁的桂香扑鼻而来,泌人心脾,让我心旷神怡,只见一朵朵开得正烈的金色桂花,迎风而立,仿佛在向我招手.我们追着这桂香,走进了清幽的公园.
-			</uni-card>
-			<uni-card title="Dcloud" extra="true">
+			<uni-card title="Dcloud" extra="true" @click="toDetail(0)">
 				那是一个秋意盎然、金风送爽的日子,我和父母一起来到了位于上师大旁的康健园.一踏进公园,一股浓郁的桂香扑鼻而来,泌人心脾,让我心旷神怡,只见一朵朵开得正烈的金色桂花,迎风而立,仿佛在向我招手.我们追着这桂香,走进了清幽的公园.
 				<template v-slot:extra>
-				            <uni-fav :checked="checkList[0]" class="favBtn" @click="favClick(0)" />
-				    </template>
+					<view @tap.stop="favClick(0)">
+						<uni-fav :checked="checkList[0]" class="favBtn" />
+					</view>
+				</template>
+				<view class="children" @tap.stop="favClick(0)">123</view>
 			</uni-card>
 			<uni-load-more :status="more" :contentText="contentText"></uni-load-more>
 		</view>
@@ -47,22 +47,25 @@
 			}
 		},
 		methods: {
+			// 跳转到 tabBar 页面只能使用 switchTab 跳转
 			backHome() {
-				console.log(123);
-				// 跳转到 tabBar 页面只能使用 switchTab 跳转
 				uni.switchTab({
 					url: '/pages/home/index',
 				});
-				// uni.navigateBack({
-				// 	delta: 1
-				// })
 			},
-			favorite() {
-				console.log(456);
+			// 跳到加入收藏
+			toFav() {
 				uni.navigateTo({
-					url: '/pages/home/favorite',
+					url: '/pages/home/fav',
 				});
 			},
+			// 跳转到详情
+			toDetail(index) {
+				uni.navigateTo({
+					url: '/pages/home/detail?id='+index,
+				});
+			},
+			// 点击收藏
 			favClick(index) {
 				this.checkList[index] = !this.checkList[index]
 				this.$forceUpdate()
