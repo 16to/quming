@@ -47,6 +47,13 @@ public class NameController {
 		return HttpResult.success();
 	}
 	
+	@ApiOperation("取消收藏")
+	@PostMapping("actions/collect/cancer")
+	public HttpResult collectCancer(@RequestBody CollectNameParam param) {
+		nameService.collectName(param);
+		return HttpResult.success();
+	}
+	
 	@ApiOperation("获取收藏列表")
 	@GetMapping("collections/list")
 	public HttpResult<List<NameVO>> getCollectNames(@RequestParam String userId) {

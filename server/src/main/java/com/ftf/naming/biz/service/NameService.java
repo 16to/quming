@@ -1,19 +1,16 @@
 package com.ftf.naming.biz.service;
 
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.ConcurrentHashMap;
 
-import javax.annotation.PostConstruct;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.ftf.naming.biz.dto.XHwordDTO;
+import com.ftf.naming.biz.domain.dao.XHWordDAO;
+import com.ftf.naming.biz.domain.mapper.XHWordMapper;
 import com.ftf.naming.biz.enums.ConstellationEnum;
 import com.ftf.naming.biz.enums.ElementEnum;
 import com.ftf.naming.biz.enums.SourceEnum;
@@ -23,51 +20,25 @@ import com.ftf.naming.biz.param.NewNameParam;
 import com.ftf.naming.biz.vo.NameDetailVO;
 import com.ftf.naming.biz.vo.NameVO;
 import com.ftf.naming.biz.vo.WordVO;
-import com.ftf.naming.util.JsonUtil;
 import com.ftf.naming.util.UuidUtil;
 
-import lombok.extern.slf4j.Slf4j;
-
 @Service
-@Slf4j
 public class NameService {
 	
-	private List<XHwordDTO> nameList;
+	@Autowired
+	private XHWordMapper xhwordMapper;
+	
+	@Autowired
+	private ZodiacService zodiacService;
+	
+	@Autowired
+	private ConstellationService constellationService;
 	
 	private ConcurrentHashMap<String, NameVO> names = new ConcurrentHashMap<String, NameVO>();
 	
-	private ConcurrentHashMap<String, NameVO> collectNames = new ConcurrentHashMap<String, NameVO>();
+	private ConcurrentHashMap<String, ConcurrentHashMap<String,NameVO>> collectNames = new ConcurrentHashMap<String, ConcurrentHashMap<String, NameVO>>();
 	
 	private Random r = new Random();
-
-	@PostConstruct
-	public void init() {
-		InputStreamReader is = null;
-		try{
-			is = new InputStreamReader(this.getClass().getResourceAsStream("/word.json"),"utf-8");
-			StringBuffer sb = new StringBuffer();
-			int ch = 0;
-            while ((ch = is.read()) != -1) {
-                sb.append((char) ch);
-            }
-            TypeReference<List<XHwordDTO>> t = new TypeReference<List<XHwordDTO>>() {};
-            nameList = JsonUtil.string2Obj(sb.toString(), t);
-        }
-		catch(Exception e) {
-			log.error("name init error",e);
-		}
-		finally {
-			if(is != null) {
-				try {
-					is.close();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				is = null;
-			}
-		}
-	}
 	
 	public List<NameVO> generate(NewNameParam param){
 		List<NameVO> result = new ArrayList<NameVO>();
@@ -81,8 +52,8 @@ public class NameService {
 		newName.setId(nameId);
 		newName.setFirstName(param.getFirstName());
 		newName.setLength(2);
-		newName.setZodiac(getZodiac(newName).getName());
-		newName.setConstellation(getConstellation(newName).getName());
+		newName.setZodiac(getZodiac(param.getBirth()).getName());
+		newName.setConstellation(getConstellation(param.getBirth()).getName());
 		newName.setSource(getSource(newName));
 		
 		List<WordVO> lastName = new ArrayList<WordVO>();
@@ -96,7 +67,8 @@ public class NameService {
 	}
 	
 	public WordVO getWord(NewNameParam param) {
-		XHwordDTO name = nameList.get(r.nextInt(nameList.size()));
+		int id = r.nextInt(10000);
+		XHWordDAO name = xhwordMapper.selectById(id);
 		WordVO word = new WordVO();
 		word.setWord(name.getWord());
 		word.setOldword(name.getOldword());
@@ -120,10 +92,8 @@ public class NameService {
 		nameDetail.setLength(name.getLength());
 		nameDetail.setSource(name.getSource());
 		nameDetail.setCelebrities(Collections.singletonList(getCelebrity(name)));
-		nameDetail.setZodiac(new NameDetailVO.Zodiac(getZodiac(name).getType(), getZodiac(name).getName(),
-				"汪汪汪"));
-		nameDetail.setConstellation(new NameDetailVO.Constellation(getConstellation(name).getType(),
-				getConstellation(name).getName(), "七月份的尾巴你是狮子座"));
+		nameDetail.setZodiac(new NameDetailVO.Zodiac(ZodiacEnum.getByName(name.getZodiac())));
+		nameDetail.setConstellation(new NameDetailVO.Constellation(ConstellationEnum.getByName(name.getConstellation())));
 		nameDetail.setSame(new NameDetailVO.Same(10, 10));
 		nameDetail.setLastName(name.getLastName());
 		return nameDetail;
@@ -131,12 +101,23 @@ public class NameService {
 	
 	public void collectName(CollectNameParam param) {
 		NameVO name = names.get(param.getNameId());
-		collectNames.put(param.getUserId(), name);
+		ConcurrentHashMap<String,NameVO> nameMap = new ConcurrentHashMap<String,NameVO>();
+		nameMap.put(param.getNameId(), name);
+		collectNames.put(param.getUserId(), nameMap);
+	}
+	
+	public void collectCancer(CollectNameParam param) {
+		ConcurrentHashMap<String,NameVO> nameMap = collectNames.get(param.getUserId());
+		if(nameMap != null) {
+			nameMap.remove(param.getNameId());
+		}
 	}
 	
 	public List<NameVO> getCollectNameList(String userId) {
 		List<NameVO> result = new ArrayList<NameVO>();
-		result.add(collectNames.get(userId));
+		for(NameVO name : collectNames.get(userId).values()) {
+			result.add(name);
+		}
 		return result;
 	}
 	
@@ -148,15 +129,15 @@ public class NameService {
 		return "还名人呢？你就是个人名";
 	}
 	
-	private ZodiacEnum getZodiac(NameVO name) {
-		return ZodiacEnum.DOG;
+	private ZodiacEnum getZodiac(String birth) {
+		return zodiacService.getByBirth(birth);
 	}
 	
-	private ElementEnum getElement(XHwordDTO name) {
+	private ElementEnum getElement(XHWordDAO name) {
 		return ElementEnum.METAL;
 	}
 
-	private ConstellationEnum getConstellation(NameVO name) {
-		return ConstellationEnum.LEO;
+	private ConstellationEnum getConstellation(String birth) {
+		return constellationService.getByBirth(birth);
 	}
 }

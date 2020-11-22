@@ -143,7 +143,32 @@ POST	/name/actions/collect
 }
 ```
 
-## 2.3查询收藏列表
+## 2.3取消收藏
+
+#### 接口路径
+
+POST	/name/actions/collect/cancer
+
+#### 请求
+
+```json
+{
+	"userId":"12345",
+	"nameId":"12345"
+}
+```
+
+#### 响应
+
+```json
+{
+	"code":0,
+    "message":"成功",
+    "data":null
+}
+```
+
+## 2.4查询收藏列表
 
 GET	/name/collections/list
 

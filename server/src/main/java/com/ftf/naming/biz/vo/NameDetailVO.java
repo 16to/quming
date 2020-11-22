@@ -2,6 +2,9 @@ package com.ftf.naming.biz.vo;
 
 import java.util.List;
 
+import com.ftf.naming.biz.enums.ConstellationEnum;
+import com.ftf.naming.biz.enums.ZodiacEnum;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
@@ -47,6 +50,12 @@ public class NameDetailVO {
 		private String name;
 		@ApiModelProperty("解释")
 		private String explanation;
+		
+		public Zodiac(ZodiacEnum data) {
+			this.type = data.getType();
+			this.name = data.getName();
+			this.explanation = data.getDescription();
+		}
 	}
 	
 	@Data
@@ -60,6 +69,12 @@ public class NameDetailVO {
 		private String name;
 		@ApiModelProperty("解释")
 		private String explanation;
+		
+		public Constellation(ConstellationEnum data) {
+			this.type = data.getType();
+			this.name = data.getName();
+			this.explanation = data.getDescription();
+		}
 	}
 	
 	@Data
