@@ -14,5 +14,7 @@ public interface XHWordMapper {
 	
 	XHWordDAO selectById(@Param("id") Integer id);
 	
+	XHWordDAO selectByWord(@Param("word") String word);
+	
 	int batchInsert(List<XHWordDAO> wordList);
 }

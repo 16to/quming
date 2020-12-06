@@ -14,6 +14,10 @@
 	<select id="selectById" resultMap="BaseResult">
         SELECT * from qm_xh_word where id=#{id}
     </select>
+    
+    <select id="selectByWord" resultMap="BaseResult">
+        SELECT * from qm_xh_word where word=#{word}
+    </select>
 
     <select id="listAll" resultType="java.util.List">
         SELECT * from qm_xh_word limit 1

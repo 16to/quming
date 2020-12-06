@@ -9,7 +9,9 @@ import java.util.concurrent.ConcurrentHashMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ftf.naming.biz.domain.dao.ShijingDAO;
 import com.ftf.naming.biz.domain.dao.XHWordDAO;
+import com.ftf.naming.biz.domain.mapper.ShijingMapper;
 import com.ftf.naming.biz.domain.mapper.XHWordMapper;
 import com.ftf.naming.biz.enums.ConstellationEnum;
 import com.ftf.naming.biz.enums.ElementEnum;
@@ -27,6 +29,9 @@ public class NameService {
 	
 	@Autowired
 	private XHWordMapper xhwordMapper;
+	
+	@Autowired
+	private ShijingMapper shijingMapper;
 	
 	@Autowired
 	private ZodiacService zodiacService;
@@ -51,19 +56,48 @@ public class NameService {
 		String nameId = UuidUtil.create();
 		newName.setId(nameId);
 		newName.setFirstName(param.getFirstName());
-		newName.setLength(2);
+		newName.setLength(3);
 		newName.setZodiac(getZodiac(param.getBirth()).getName());
 		newName.setConstellation(getConstellation(param.getBirth()).getName());
 		newName.setSource(getSource(newName));
 		
+		//从新华字典获取名字
 		List<WordVO> lastName = new ArrayList<WordVO>();
-		lastName.add(getWord(param));
+//		lastName.add(getWord(param));
+		
+		//从诗经获取名字
+		lastName = getWordFromShijing(param);
 		
 		newName.setLastName(lastName);
 		
 		names.put(nameId, newName);
 		
 		return newName;
+	}
+	
+	public List<WordVO> getWordFromShijing(NewNameParam param) {
+		List<WordVO> lastName = new ArrayList<WordVO>();
+		int id = r.nextInt(305);
+		ShijingDAO shijing = shijingMapper.selectById(id);
+		String content = shijing.getContent();
+		//从诗经的句子冲取出字
+		lastName.add(getWordByShijing(content,1));
+		lastName.add(getWordByShijing(content,4));
+		return lastName;
+	}
+	
+	private WordVO getWordByShijing(String content,Integer index) {
+		String keyWord = content.substring(index,index+1);
+		XHWordDAO name = xhwordMapper.selectByWord(keyWord);
+		WordVO word = new WordVO();
+		word.setWord(name.getWord());
+		word.setOldword(name.getOldword());
+		word.setStrokes(Integer.valueOf(name.getStrokes()));
+		word.setPinyin(name.getPinyin());
+		word.setExplanation(name.getExplanation());
+		ElementEnum element = getElement(name);
+		word.setElement(new WordVO.Element(element.getType(),element.getName(),"五行的解释"));
+		return word;
 	}
 	
 	public WordVO getWord(NewNameParam param) {
