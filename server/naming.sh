@@ -132,4 +132,5 @@ case "$1" in
      ;;
   *)
      echo "Usage: $0 {start|stop|restart|status|info}"
-     exit 1
+	 exit 1
+esac
