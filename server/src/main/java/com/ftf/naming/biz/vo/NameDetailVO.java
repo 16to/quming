@@ -20,7 +20,7 @@ public class NameDetailVO {
 	@ApiModelProperty("名字唯一标识")
 	private String id;
 	@ApiModelProperty("姓")
-	private String firstName;
+	private WordVO firstName;
 	@ApiModelProperty("长度")
 	private Integer length;
 	@ApiModelProperty("出处")

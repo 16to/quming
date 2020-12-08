@@ -34,7 +34,18 @@ POST	/name/actions/generate
         {
             //整个名字和单个字的结构区分开
             "id":"名字唯一标识",
-            "firstName":"姓",
+            "firstName":{
+                "word":"姓",
+                "oldword":"繁体",
+                "strokes":10,//笔画
+                "pinyin":"拼音",
+                "explanation":"字典释义",
+                "element":{//五行
+                    "type":"类型",
+                    "name":"名称",
+                    "explanation":"解释"
+                }
+            },
             "length":2,
             "zodiac":"生肖",
             "constellation":"星座",
@@ -79,7 +90,18 @@ id=12345
     "data":{
         //整个名字和单个字的结构区分开
         "id":"名字唯一标识",
-        "firstName":"姓",
+        "firstName":{
+                "word":"姓",
+                "oldword":"繁体",
+                "strokes":10,//笔画
+                "pinyin":"拼音",
+                "explanation":"字典释义",
+                "element":{//五行
+                    "type":"类型",
+                    "name":"名称",
+                    "explanation":"解释"
+                }
+            },
         "length":2,
         "source":"出处",
         "celebrities":["名人1","名人2"],

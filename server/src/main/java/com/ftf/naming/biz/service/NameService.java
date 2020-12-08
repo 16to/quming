@@ -24,7 +24,10 @@ import com.ftf.naming.biz.vo.NameVO;
 import com.ftf.naming.biz.vo.WordVO;
 import com.ftf.naming.util.UuidUtil;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Service
+@Slf4j
 public class NameService {
 	
 	@Autowired
@@ -47,7 +50,9 @@ public class NameService {
 	
 	public List<NameVO> generate(NewNameParam param){
 		List<NameVO> result = new ArrayList<NameVO>();
-		result.add(newName(param));
+		for(int i=0;i<10;i++) {
+			result.add(newName(param));
+		}
 		return result;
 	}
 	
@@ -55,7 +60,7 @@ public class NameService {
 		NameVO newName = new NameVO();
 		String nameId = UuidUtil.create();
 		newName.setId(nameId);
-		newName.setFirstName(param.getFirstName());
+		newName.setFirstName(getWordByKeyWord(param.getFirstName()));
 		newName.setLength(3);
 		newName.setZodiac(getZodiac(param.getBirth()).getName());
 		newName.setConstellation(getConstellation(param.getBirth()).getName());
@@ -88,7 +93,20 @@ public class NameService {
 	
 	private WordVO getWordByShijing(String content,Integer index) {
 		String keyWord = content.substring(index,index+1);
+		WordVO word = getWordByKeyWord(keyWord);
+		if(word == null) {
+			keyWord = content.substring(2,3);
+			word = getWordByKeyWord(keyWord);
+		}
+		return word;
+	}
+	
+	private WordVO getWordByKeyWord(String keyWord) {
 		XHWordDAO name = xhwordMapper.selectByWord(keyWord);
+		if(name == null) {
+			log.error("{}在新华字典中不存在",keyWord);
+			return null;
+		}
 		WordVO word = new WordVO();
 		word.setWord(name.getWord());
 		word.setOldword(name.getOldword());
