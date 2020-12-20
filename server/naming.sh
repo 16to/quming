@@ -1,6 +1,6 @@
 #!/bin/sh
 #java虚拟机启动参数
-JAVA_OPTS="-Xms128m -Xmx128m"
+JAVA_OPTS="-Xms128m -Xmx128m -jar naming-0.0.1-SNAPSHOT.jar"
  
 ###################################
 #(函数)判断程序是否已启动
@@ -132,5 +132,4 @@ case "$1" in
      ;;
   *)
      echo "Usage: $0 {start|stop|restart|status|info}"
-	 exit 1
-esac
+     exit 1
