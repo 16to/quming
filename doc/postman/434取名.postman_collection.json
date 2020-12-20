@@ -1,0 +1,103 @@
+{
+	"info": {
+		"_postman_id": "7df343c5-d93d-4b2a-a0e9-7fa93eacce5a",
+		"name": "434取名",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "本地环境",
+			"item": [
+				{
+					"name": "取名",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"firstName\":\"刘\",\n\t\"birth\":\"2020-08-08 11:11\"\n}"
+						},
+						"url": {
+							"raw": "localhost:8080/name/actions/generate",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"name",
+								"actions",
+								"generate"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "测试环境",
+			"item": [
+				{
+					"name": "取名",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"firstName\":\"刘\",\n\t\"birth\":\"2020-08-08 11:11\"\n}"
+						},
+						"url": {
+							"raw": "localhost:8080/name/actions/generate",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"name",
+								"actions",
+								"generate"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "23176b60-4086-4e17-9f73-155850e8b9ed",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "164f87b0-7a9e-4074-83ef-7676495a1b27",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
