@@ -116,8 +116,9 @@ id=12345
             "explanation":"解释"
         },
         "same":{//同名
-            "male":10,//男性
-            "female":12,//女性
+            "total":15000,//总数
+            "male":90,//男性比例
+            "female":10//女性比例
         },
         "lastName":[
             {
