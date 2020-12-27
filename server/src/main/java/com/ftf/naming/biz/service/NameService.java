@@ -8,11 +8,13 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import com.ftf.naming.biz.domain.dao.ShijingDAO;
 import com.ftf.naming.biz.domain.dao.XHWordDAO;
 import com.ftf.naming.biz.domain.mapper.ShijingMapper;
 import com.ftf.naming.biz.domain.mapper.XHWordMapper;
+import com.ftf.naming.biz.dto.SameNameDTO;
 import com.ftf.naming.biz.enums.ConstellationEnum;
 import com.ftf.naming.biz.enums.ElementEnum;
 import com.ftf.naming.biz.enums.SourceEnum;
@@ -22,6 +24,7 @@ import com.ftf.naming.biz.param.NewNameParam;
 import com.ftf.naming.biz.vo.NameDetailVO;
 import com.ftf.naming.biz.vo.NameVO;
 import com.ftf.naming.biz.vo.WordVO;
+import com.ftf.naming.util.RuleUtil;
 import com.ftf.naming.util.UuidUtil;
 
 import lombok.extern.slf4j.Slf4j;
@@ -42,16 +45,26 @@ public class NameService {
 	@Autowired
 	private ConstellationService constellationService;
 	
+	private RestTemplate restTemplate = new RestTemplate();
+	
 	private ConcurrentHashMap<String, NameVO> names = new ConcurrentHashMap<String, NameVO>();
 	
 	private ConcurrentHashMap<String, ConcurrentHashMap<String,NameVO>> collectNames = new ConcurrentHashMap<String, ConcurrentHashMap<String, NameVO>>();
 	
 	private Random r = new Random();
 	
+	private static final String SAME_URL = "http://api.16to.com/qm?s=";
+	
 	public List<NameVO> generate(NewNameParam param){
 		List<NameVO> result = new ArrayList<NameVO>();
 		for(int i=0;i<10;i++) {
-			result.add(newName(param));
+			try {
+				result.add(newName(param));
+			}
+			catch(Exception e) {
+				log.error("生成名字发生异常",e);
+				continue;
+			}
 		}
 		return result;
 	}
@@ -61,7 +74,7 @@ public class NameService {
 		String nameId = UuidUtil.create();
 		newName.setId(nameId);
 		newName.setFirstName(getWordByKeyWord(param.getFirstName()));
-		newName.setLength(3);
+		
 		newName.setZodiac(getZodiac(param.getBirth()).getName());
 		newName.setConstellation(getConstellation(param.getBirth()).getName());
 		newName.setSource(getSource(newName));
@@ -72,6 +85,8 @@ public class NameService {
 		
 		//从诗经获取名字
 		lastName = getWordFromShijing(param);
+		
+		newName.setLength(lastName.size());
 		
 		newName.setLastName(lastName);
 		
@@ -86,19 +101,13 @@ public class NameService {
 		ShijingDAO shijing = shijingMapper.selectById(id);
 		String content = shijing.getContent();
 		//从诗经的句子冲取出字
-		lastName.add(getWordByShijing(content,1));
-		lastName.add(getWordByShijing(content,4));
-		return lastName;
-	}
-	
-	private WordVO getWordByShijing(String content,Integer index) {
-		String keyWord = content.substring(index,index+1);
-		WordVO word = getWordByKeyWord(keyWord);
-		if(word == null) {
-			keyWord = content.substring(2,3);
-			word = getWordByKeyWord(keyWord);
+//		lastName.add(getWordByShijing(content,1));
+//		lastName.add(getWordByShijing(content,4));
+		List<String> wordList = RuleUtil.run(content.split("，"));
+		if(wordList != null) {
+			wordList.stream().forEach(w->lastName.add(getWordByKeyWord(w)));
 		}
-		return word;
+		return lastName;
 	}
 	
 	private WordVO getWordByKeyWord(String keyWord) {
@@ -114,7 +123,10 @@ public class NameService {
 		word.setPinyin(name.getPinyin());
 		word.setExplanation(name.getExplanation());
 		ElementEnum element = getElement(name);
-		word.setElement(new WordVO.Element(element.getType(),element.getName(),"五行的解释"));
+		log.info("五行：{}",name.getWx());
+		if(element != null) {
+			word.setElement(new WordVO.Element(element.getType(),element.getName(),element.getExplanation()));
+		}
 		return word;
 	}
 	
@@ -128,7 +140,9 @@ public class NameService {
 		word.setPinyin(name.getPinyin());
 		word.setExplanation(name.getExplanation());
 		ElementEnum element = getElement(name);
-		word.setElement(new WordVO.Element(element.getType(),element.getName(),"五行的解释"));
+		if(element !=null) {
+			word.setElement(new WordVO.Element(element.getType(),element.getName(),element.getType()));
+		}
 		
 		return word;
 	}
@@ -146,7 +160,7 @@ public class NameService {
 		nameDetail.setCelebrities(Collections.singletonList(getCelebrity(name)));
 		nameDetail.setZodiac(new NameDetailVO.Zodiac(ZodiacEnum.getByName(name.getZodiac())));
 		nameDetail.setConstellation(new NameDetailVO.Constellation(ConstellationEnum.getByName(name.getConstellation())));
-		nameDetail.setSame(new NameDetailVO.Same(10, 10));
+		nameDetail.setSame(getSame(name));
 		nameDetail.setLastName(name.getLastName());
 		return nameDetail;
 	}
@@ -173,20 +187,25 @@ public class NameService {
 		return result;
 	}
 	
+	private NameDetailVO.Same getSame(NameVO nameVO) {
+		SameNameDTO sameName = restTemplate.getForObject(SAME_URL + nameVO.getFullName(), SameNameDTO.class);
+		return new NameDetailVO.Same(sameName.getAll(),sameName.getMan(),sameName.getFeman());
+	}
+	
 	private String getSource(NameVO name) {
 		return SourceEnum.SHIJING.getName();
 	}
 	
 	private String getCelebrity(NameVO name) {
-		return "还名人呢？你就是个人名";
+		return name.getFullName();
 	}
 	
 	private ZodiacEnum getZodiac(String birth) {
 		return zodiacService.getByBirth(birth);
 	}
 	
-	private ElementEnum getElement(XHWordDAO name) {
-		return ElementEnum.METAL;
+	private ElementEnum getElement(XHWordDAO word) {
+		return ElementEnum.getByName(word.getWx());
 	}
 
 	private ConstellationEnum getConstellation(String birth) {

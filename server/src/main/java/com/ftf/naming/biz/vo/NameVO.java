@@ -31,4 +31,11 @@ public class NameVO {
 	
 	@ApiModelProperty("名")
 	private List<WordVO> lastName;
+	
+	public String getFullName() {
+		StringBuilder sb = new StringBuilder();
+		sb.append(getFirstName());
+		getLastName().stream().forEachOrdered(n->sb.append(n.getWord()));
+		return sb.toString();
+	}
 }

@@ -16,4 +16,6 @@ public class XHWordDAO {
 	private String radicals;
 	private String explanation;
 	private String more;
+	private String wx;
+	private String jg;
 }

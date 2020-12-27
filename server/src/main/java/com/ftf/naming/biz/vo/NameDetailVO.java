@@ -82,6 +82,8 @@ public class NameDetailVO {
 	@NoArgsConstructor
 	@ApiModel("同名")
 	public static class Same{
+		@ApiModelProperty("总数")
+		private Integer total;
 		@ApiModelProperty("男性")
 		private Integer male;
 		@ApiModelProperty("女性")

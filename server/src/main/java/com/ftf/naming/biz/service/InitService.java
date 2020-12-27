@@ -17,6 +17,7 @@ import com.ftf.naming.biz.domain.mapper.ShijingMapper;
 import com.ftf.naming.biz.domain.mapper.XHWordMapper;
 import com.ftf.naming.biz.dto.ShijingDTO;
 import com.ftf.naming.util.JsonUtil;
+import com.ftf.naming.util.RuleUtil;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -29,6 +30,34 @@ public class InitService {
 	
 	@Autowired
 	private ShijingMapper shijingMapper;
+	
+	@PostConstruct
+	public void initRule() {
+		InputStreamReader is = null;
+		try{
+			is = new InputStreamReader(this.getClass().getResourceAsStream("/rule.properties"),"utf-8");
+			StringBuffer sb = new StringBuffer();
+			int ch = 0;
+            while ((ch = is.read()) != -1) {
+                sb.append((char) ch);
+            }
+            RuleUtil.init(sb.toString());
+        }
+		catch(Exception e) {
+			log.error("rule init error",e);
+		}
+		finally {
+			if(is != null) {
+				try {
+					is.close();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				is = null;
+			}
+		}
+	}
 	
 	public void initXHWord() {
 		InputStreamReader is = null;

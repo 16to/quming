@@ -9,6 +9,8 @@
         <result property="radicals" column="radicals"/>
         <result property="explanation" column="explanation"/>
         <result property="more" column="more"/>
+        <result property="wx" column="wx"/>
+        <result property="jg" column="jg"/>
     </resultMap>
 
 	<select id="selectById" resultMap="BaseResult">
