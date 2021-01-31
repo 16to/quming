@@ -21,6 +21,7 @@ import com.ftf.naming.biz.enums.SourceEnum;
 import com.ftf.naming.biz.enums.ZodiacEnum;
 import com.ftf.naming.biz.param.CollectNameParam;
 import com.ftf.naming.biz.param.NewNameParam;
+import com.ftf.naming.biz.service.intf.CCInterface;
 import com.ftf.naming.biz.vo.NameDetailVO;
 import com.ftf.naming.biz.vo.NameVO;
 import com.ftf.naming.biz.vo.WordVO;
@@ -34,13 +35,13 @@ import lombok.extern.slf4j.Slf4j;
 public class NameService {
 	
 	@Autowired
-	private XHWordMapper xhwordMapper;
-	
-	@Autowired
-	private ShijingMapper shijingMapper;
-	
-	@Autowired
 	private ZodiacService zodiacService;
+	
+	@Autowired
+	private XHWordService xhWordService;
+	
+	@Autowired
+	private CCInterface ccService;
 	
 	@Autowired
 	private ConstellationService constellationService;
@@ -51,9 +52,7 @@ public class NameService {
 	
 	private ConcurrentHashMap<String, ConcurrentHashMap<String,NameVO>> collectNames = new ConcurrentHashMap<String, ConcurrentHashMap<String, NameVO>>();
 	
-	private Random r = new Random();
-	
-	private static final String SAME_URL = "http://api.16to.com/qm?s=";
+	private static final String SAME_URL = "http://api.16to.com/qm/sex?s=";
 	
 	public List<NameVO> generate(NewNameParam param){
 		List<NameVO> result = new ArrayList<NameVO>();
@@ -73,7 +72,7 @@ public class NameService {
 		NameVO newName = new NameVO();
 		String nameId = UuidUtil.create();
 		newName.setId(nameId);
-		newName.setFirstName(getWordByKeyWord(param.getFirstName()));
+		newName.setFirstName(xhWordService.getWordByKeyWord(param.getFirstName()));
 		
 		newName.setZodiac(getZodiac(param.getBirth()).getName());
 		newName.setConstellation(getConstellation(param.getBirth()).getName());
@@ -83,8 +82,7 @@ public class NameService {
 		List<WordVO> lastName = new ArrayList<WordVO>();
 //		lastName.add(getWord(param));
 		
-		//从诗经获取名字
-		lastName = getWordFromShijing(param);
+		lastName = ccService.getWord();
 		
 		newName.setLength(lastName.size());
 		
@@ -93,58 +91,6 @@ public class NameService {
 		names.put(nameId, newName);
 		
 		return newName;
-	}
-	
-	public List<WordVO> getWordFromShijing(NewNameParam param) {
-		List<WordVO> lastName = new ArrayList<WordVO>();
-		int id = r.nextInt(305);
-		ShijingDAO shijing = shijingMapper.selectById(id);
-		String content = shijing.getContent();
-		//从诗经的句子冲取出字
-//		lastName.add(getWordByShijing(content,1));
-//		lastName.add(getWordByShijing(content,4));
-		List<String> wordList = RuleUtil.run(content.split("，"));
-		if(wordList != null) {
-			wordList.stream().forEach(w->lastName.add(getWordByKeyWord(w)));
-		}
-		return lastName;
-	}
-	
-	private WordVO getWordByKeyWord(String keyWord) {
-		XHWordDAO name = xhwordMapper.selectByWord(keyWord);
-		if(name == null) {
-			log.error("{}在新华字典中不存在",keyWord);
-			return null;
-		}
-		WordVO word = new WordVO();
-		word.setWord(name.getWord());
-		word.setOldword(name.getOldword());
-		word.setStrokes(Integer.valueOf(name.getStrokes()));
-		word.setPinyin(name.getPinyin());
-		word.setExplanation(name.getExplanation());
-		ElementEnum element = getElement(name);
-		log.info("五行：{}",name.getWx());
-		if(element != null) {
-			word.setElement(new WordVO.Element(element.getType(),element.getName(),element.getExplanation()));
-		}
-		return word;
-	}
-	
-	public WordVO getWord(NewNameParam param) {
-		int id = r.nextInt(10000);
-		XHWordDAO name = xhwordMapper.selectById(id);
-		WordVO word = new WordVO();
-		word.setWord(name.getWord());
-		word.setOldword(name.getOldword());
-		word.setStrokes(Integer.valueOf(name.getStrokes()));
-		word.setPinyin(name.getPinyin());
-		word.setExplanation(name.getExplanation());
-		ElementEnum element = getElement(name);
-		if(element !=null) {
-			word.setElement(new WordVO.Element(element.getType(),element.getName(),element.getType()));
-		}
-		
-		return word;
 	}
 	
 	public NameDetailVO getNameDetail(String nameId) {
@@ -188,8 +134,16 @@ public class NameService {
 	}
 	
 	private NameDetailVO.Same getSame(NameVO nameVO) {
-		SameNameDTO sameName = restTemplate.getForObject(SAME_URL + nameVO.getFullName(), SameNameDTO.class);
-		return new NameDetailVO.Same(sameName.getAll(),sameName.getMan(),sameName.getFeman());
+		NameDetailVO.Same same = null;
+		try {
+			SameNameDTO sameName = restTemplate.getForObject(SAME_URL + nameVO.generateFullName(), SameNameDTO.class);
+			same = new NameDetailVO.Same(sameName.getAll(),sameName.getMan(),sameName.getFeman());
+		}
+		catch(Exception e) {
+			log.error("获取同名信息失败",e);
+		}
+		
+		return same; 
 	}
 	
 	private String getSource(NameVO name) {
@@ -197,7 +151,7 @@ public class NameService {
 	}
 	
 	private String getCelebrity(NameVO name) {
-		return name.getFullName();
+		return name.generateFullName();
 	}
 	
 	private ZodiacEnum getZodiac(String birth) {
